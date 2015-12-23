@@ -7,4 +7,7 @@ var soleFood = angular.module('soleFood', ['ngRoute'])
     .when('/login', {
       templateUrl: '/partials/login.html'
     })
+    .when('/add', {
+      templateUrl: '/partials/add.html'
+    })
   })
