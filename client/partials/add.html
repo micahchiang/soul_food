@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add an event</title>
+  </head>
+  <body>
+    <p ng-bind="errors.message"></p>
+      <form ng-submit="addEvent()">
+        <p>Event Date: <input type="date" name="date" value="date"></p>
+        <p>Event Time: <input type="time" name="time" value="time"></p>
+        <p>Event Location: <input type="location" name="location" value="location"></p>
+        <p>Event Description: <textarea ng-model="new_answer.answer"></textarea></p>
+        <a ng-href="#/dashboard">Cancel</a>
+        <input type="submit" value="Submit">
+      </form>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>View page for Event</title>
+  </head>
+  <body>
+    <h3>Event title</h3>
+    <ul>
+      <li>Time</li>
+      <li>Date</li>
+      <li>Description</li>
+    </ul>
+    <div class="comments">
+      <p ng-bind="errors.message"></p>
+      <form ng-submit="addComment(event._id)">
+        <p>Your Comment: <textarea ng-model="new_comment.comment"></textarea></p>
+        <a ng-href="#/">Cancel</a>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </body>
+</html>
