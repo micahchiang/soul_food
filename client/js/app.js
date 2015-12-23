@@ -1,4 +1,4 @@
-var soleMates = angular.module('soleMates', ['ngRoute'])
+var soleFood = angular.module('soleFood', ['ngRoute'])
   .config(function($routeProvider){
     $routeProvider
     .when('/', {
