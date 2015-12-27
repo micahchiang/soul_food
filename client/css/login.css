@@ -1,0 +1,69 @@
+body{
+	background: url('/images/main_texture.png');
+}
+
+h1{
+	left: 40%;
+	position: relative;
+	color: white;
+	font-family: 'Rock Salt', cursive;
+}
+
+.boxes{
+	width: 400px;
+	left: 30%;
+	position: relative;
+	padding: 15px;
+	border-radius: 5px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	background: rgba(154, 192, 205, .5);
+}
+
+label{
+	display: inline-block;
+	width: 250px;
+	color: white;
+}
+input:not([type=submit]){
+	box-shadow: none;
+	height: 20px;
+	background: transparent;
+	box-sizing: border-box;
+	outline: none;
+	border: none;
+	border-bottom: 1px solid #ddd;
+	padding: 7px;
+
+}
+
+p{
+	color: white;
+}
+
+
+#google{
+	margin-left: 33%;
+}
+
+.oauth{
+	/*border: 1px solid silver;*/
+	padding: 10px;
+	border-radius: 5px;
+	text-align: center;
+	margin-top: 10px;
+	background: rgba(192, 192, 192, .5);
+}
+
+.submission {
+	margin-top: 10px;
+	text-align: center;
+	margin-left: 130px;
+	background: rgba(192, 192, 192, .5);
+	border-radius: 10px;
+	border: none;
+	width: 150px;
+	height: 50px;
+	color: white;
+	font-size: 100%;
+}

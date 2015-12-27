@@ -3,6 +3,7 @@ body {
 	padding: 0;
 	width: 100%;
 	font-family: Arial;
+	color: white;
 }
 
 #header{
@@ -52,7 +53,34 @@ body {
 	overflow: hidden;
 	padding: 200px 0;
 	text-align: center;
+	background-color: white;
+	color: black;
 }
+	.three_boxes{
+		width: 300px;
+		height: 340px;
+		/*border: 1px solid black;*/
+		display: inline-block;
+		position: relative;
+	}
+	.three_boxes h4{
+		position: absolute;
+		bottom: 0;
+		margin-left: 70px;
+		margin-top: 5px;
+	}
+	#friends{
+
+		background: url('/images/addfriend.jpg') no-repeat;
+	}
+	#eating{
+		background: url('/images/eatingicon.jpeg') no-repeat;
+		margin-left: 15px;
+		margin-right: 25px;
+	}
+	#networking{
+		background: url('/images/networking.jpeg') no-repeat;
+	}
 
 #slide3{
 	width: 100%;
@@ -62,4 +90,32 @@ body {
 	padding: 200px 0 260px 0;
 	background-size: cover;
 	text-align: center;
+	color: white;
 }
+
+.services {
+	display: inline-block;
+	border: 1px solid black;
+	width: 200px;
+	height: 200px;
+	color: white;
+}
+	#american {
+		background: url('/images/american.jpg') no-repeat;
+		background-size: 135%;
+	}
+	#chinese{
+		background: url('/images/orangechicken.jpg') no-repeat;
+	}
+	#med{
+		background: url('/images/greek-salad.jpg') no-repeat;
+	}
+	#mexican{
+		background: url('/images/mex1.jpg') no-repeat;
+	}
+	#italian{
+		background: url('/images/italian.jpg') no-repeat;
+	}
+	#indian{
+		background: url('/images/indian-food.jpg') no-repeat;
+	}
