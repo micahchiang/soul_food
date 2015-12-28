@@ -1,0 +1,31 @@
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	font-family: Arial;
+	color: white;
+}
+
+header {
+	border: 1px solid black;
+}
+
+header h1, a {
+	display: inline-block;
+}
+	/*#linkone {
+		margin-left: 600px;
+	}*/
+
+	#linkbox{
+		border: 1px solid black;
+		display: inline-block;
+		position: absolute;
+		margin-left: 500px;
+		margin-top: 25px;
+	}
+	.headerlinks {
+		position: relative;
+		padding: 10px;
+	}
+

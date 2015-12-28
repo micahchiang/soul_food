@@ -3,58 +3,61 @@
   <head>
     <meta charset="utf-8">
     <title>User Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="css/dash.css">
   </head>
   <body>
+    <header>
     <h1>Welcome, User!</h1>
+    <div id = 'linkbox'>
+    <a id = 'linkone' class = 'headerlinks' href="#/events">Events</a> | <a class = 'headerlinks' href="#/logout">logout</a>
+    </div>
+  </header>
     <div class="profile">
       <ul>
-        <li>Name</li>
-        <li>Tastes</li>
-        <li>Number of Activies</li>
         <li>Email</li>
+        <li>Tastes</li>
       </ul>
     </div>
     <div class="itenarary">
-      <h2>Upcoming</h2>
-      <table>
+      <h2>Friend List</h2>
+          <table> <!-- This table will be redone once our front and back ends are connected. will just ng-repeat eventually -->
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Location</th>
-            <th>Description</th>
-            <th>Comments</th>
-            <th>Action</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>1/01/2016</td>
-            <td>4:00pm</td>
-            <td>101 Noodle Express</td>
-            <td>The Proposal</td>
-            <td>3</td>
-            <td><a href="#">Edit</a><a href="#">View</a><a href="#">Delete</a></td>
+            <td>Tommy</td>
+            <td>tommy@yahoo.org</td>
+            <td><a href="#">View</a> | <a href="#">Delete</a></td>
           </tr>
           <tr>
-            <td>1/01/2016</td>
-            <td>4:00pm</td>
-            <td>101 Noodle Express</td>
-            <td>The Proposal</td>
-            <td>3</td>
-            <td><a href="#">Edit</a><a href="#">View</a><a href="#">Delete</a></td>
+            <td>Eric</td>
+            <td>echou@aol.com</td>
+            <td><a href="#">View</a> | <a href="#">Delete</a></td>
           </tr>
           <tr>
-            <td>1/01/2016</td>
-            <td>4:00pm</td>
-            <td>101 Noodle Express</td>
-            <td>The Proposal</td>
-            <td>3</td>
-            <td><a href="#">Edit</a><a href="#">View</a><a href="#">Delete</a></td>
+            <td>Jason</td>
+            <td>json@neopets.cn</td>
+            <td><a href="#">View</a> | <a href="#">Delete</a></td>
           </tr>
         </tbody>
       </table>
-      <label><a href="#">Add an Event</a></label>
+      <h2>Upcoming Events</h2> <!-- divs below will be redone once connected to db. should use ng-repeat eventually -->
+      <div id = 'events_box'>
+        <div class = 'events'>Replace with DB data</div>
+        <div class = 'events'>Replace with DB data</div>
+        <div class = 'events'>Replace with DB data</div>
+        <div class = 'events'>Replace with DB data</div>
+        <div class = 'events'>Replace with DB data</div>
+        <div class = 'events'>Replace with DB data</div>
+        <div class = 'events'>Replace with DB data</div>
+        <div class = 'events'>Replace with DB data</div>
+      </div>
+      <button>Create New Event</button>
     </div>
   </body>
 </html>
