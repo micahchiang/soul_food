@@ -29,7 +29,7 @@ module.exports = (function(){
     },
     addFriend: function(req, res){
       User.findOne({_id: req.user.id}, function(err, user){
-        user.friend.push(req.body);
+        user.friends.push(req.body);
         user.save(function(err){
           res.json(err);
         })
