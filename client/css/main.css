@@ -38,7 +38,7 @@
 	height: 600px;
 	margin: 0;
 	padding: 200px 0 260px 0;
-	background-size: cover;
+	background-size: contain;
 }
 	#slide1 h1{
 		text-align: center;
@@ -54,6 +54,8 @@
 	text-align: center;
 	background-color: white;
 	color: black;
+	background-size: cover;
+	/*background: no-repeat fixed;*/
 }
 	.three_boxes{
 		width: 300px;
