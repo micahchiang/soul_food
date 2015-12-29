@@ -1,38 +1,28 @@
-<html>
-<head>
-  <title></title>
-  <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="css/login.css">
-</head>
-<body>
+<div ng-controller='loginController'>
+  <div id = 'register' class = 'boxes'>
+  <form ng-submit='createUser(newUser)'>
+  <p>New? Join Soul Food today!</p>
+    <!-- <label>First Name</label><input type = 'text' ng-model = 'newUser.first_name' name = 'firstname'>
+    <label>Last Name</label><input type = 'text' ng-model = 'newUser.last_name' name = 'lastname'> -->
+    <label>Name</label><input type = 'text' ng-model = 'newUser.name' name = 'name'>
+    <label>Email</label><input type = 'text' ng-model = 'newUser.email' name = 'email'>
+    <label>Password</label><input type = 'password' ng-model = 'newUser.password' name = 'password'>
+    <label>Confirm Password</label><input type = 'password'  name = 'confirm password'>
+    <input class ='submission' type = 'submit' value = 'Register'>
+  </form>
+  </div>
 
-<h1>Soul Food</h1>
+  <div id = 'login' class = 'boxes'>
+  <form ng-submit='loginUser(userData)'>
+    <p>Been here before? Login below.</p>
+    <div ng-if='error.message'><span ng-bind='error.message'></span></div>
+    <label>Email</label><input type = 'text' ng-model='userData.email'>
+    <label>Password</label><input type = 'password' ng-model = 'userData.password'>
+    <input class = 'submission' type ='submit' value = 'login'>
+  </form>
+  </div>
 
-<div id = 'register' class = 'boxes'>
-<form method = 'post'>
-<p>New? Join Soul Food today!</p>
-  <label>First Name</label><input type = 'text' ng-model = 'newUser.first_name' name = 'firstname'>
-  <label>Last Name</label><input type = 'text' ng-model = 'newUser.last_name' name = 'lastname'>
-  <label>Email</label><input type = 'text' ng-model = 'newUser.email' name = 'email'>
-  <label>Password</label><input type = 'text' ng-model = 'newUser.password' name = 'password'>
-  <label>Confirm Password</label><input type = 'text' ng-model = 'newUser.confirm' name = 'confirm password'>
-  <input class ='submission' type = 'submit' value = 'Register'>
-</form>
+
+  <a class = 'oauth' id = 'google' href="/auth/google">Sign in with Google</a>
+  <a class = 'oauth' href="/auth/facebook">Sign in with Facebook</a>
 </div>
-
-<div id = 'login' class = 'boxes'>
-<form method = 'post'>
-  <p>Been here before? Login below.</p>
-  <label>Email</label><input type = 'text' ng-model = 'findUser.email'>
-  <label>Password</label><input type = 'text' ng-model = 'findUser.password'>
-  <input class = 'submission' type ='submit' value = 'login'>
-</form>
-</div>
-
-
-<a class = 'oauth' id = 'google' href="#">Sign in with Google</a>
-<a class = 'oauth' href="#">Sign in with Facebook</a>
-
-</body>
-
-</html>

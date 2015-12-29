@@ -14,8 +14,9 @@ var soulFood = angular.module('soulFood', ['ngRoute'])
       templateUrl: '/partials/add.html'
     })
     .when('/dashboard', {
-      templateUrl: '/partials/dashboard.html'
+      templateUrl: '/partials/TEMPDASHBOARD.html'
     })
+    .otherwise({
+      redirectTo:'/'
+    });
   })
-
-
