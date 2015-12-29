@@ -4,7 +4,7 @@ soulFood.controller('loginController', function($scope, $location, userFactory){
   userFactory.checkLogin(function(response){
     console.log(response);
     if(response.data){
-      $location.url('/dashboard');
+      $location.url('/tempdashboard');
     }
   });
   $scope.createUser = function(input){
@@ -27,7 +27,7 @@ soulFood.controller('loginController', function($scope, $location, userFactory){
         $scope.error.message = response.err;
       } else {
         console.log('no error, log them in');
-        $location.url('/dashboard');
+        $location.url('/tempdashboard');
       }
     })
     $scope.userData = {};
