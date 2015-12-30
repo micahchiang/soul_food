@@ -7,13 +7,13 @@
 }
 
 header {
-	/*border: 1px solid black;*/
+	border: 1px solid black;
 	width: 100%;
 	background-color: rgba(192, 192, 192, .5);
 	height: 80px;
-	position: fixed;
+	position: relative;
 	text-align: right;
-	/*margin-top: 5px;*/
+	margin-top: 5px;
 }
 	.btn {
 		border-radius: 5px;
@@ -23,19 +23,26 @@ header {
 		background: rgba(154, 192, 205, .6);
 		color: white;
 		margin-right: 15px;
-		/*margin-left: -5px;*/
+		margin-left: -5px;
 	}
 	.btn:hover {
 		background: rgba(116, 205, 220, .6);
+	}
+	#btn1{
+		margin-left: 10px;
+	}
+	#btn2{
+		margin-left: -15px;
 	}
 	header h2 {
 		margin-left: -20px;
 	}
 	#userinfo{
 		/*border: 1px solid black;*/
-		width: 200px;
-		margin-top: 20px;
-		/*position: fixed;*/
+		width: 400px;
+		margin-top: -35px;
+		position: relative;
+		display: inline-block;
 	}
 #bodywrapper{
 	/*border: 1px solid black;*/

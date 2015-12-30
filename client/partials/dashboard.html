@@ -1,13 +1,13 @@
 <div id = 'wrapper' ng-controller='dashboardController'>
   <header>
     <h2>Welcome, <span ng-bind='user.name'></span>
-    <button class = 'btn' ng-href = '#/events'>events</button> 
-    <button class = 'btn' ng-click='logout()'>logout</button>   
+    <button id = 'btn1' class = 'btn' ng-href = '#/events'>events</button> 
+    <button id = 'btn2' class = 'btn' ng-click='logout()'>logout</button>   
   </header>
 <div id = 'bodywrapper'>
   <div id = 'userinfo'>
   <img src='{{user.pictureURL}}'/>
-  <h5>your email:<span ng-bind='user.email'></span></h5>
+  <h5>your email: <span ng-bind='user.email'></span></h5>
   </div>
   <!-- <h3>Your name is : <span ng-bind='user.name'></span></h3> -->
 <div id = 'constraint'>
