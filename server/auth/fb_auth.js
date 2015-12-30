@@ -9,7 +9,7 @@ passport.use(new FacebookStrategy({
 		clientID: FACEBOOK_APP_ID,
 		clientSecret: FACEBOOK_APP_SECRET,
 		callbackURL: "/auth/facebook/callback",
-		profileFields: ['email']
+		profileFields: ['email', 'name']
 	},
 	function(accessToken, refreshToken, profile, done) {
 			console.log('fbauth');
@@ -22,7 +22,7 @@ passport.use(new FacebookStrategy({
 				user = new User({
 					authId: profile.id,
 					email: profile._json.email,
-					name: profile.displayName,
+					name: profile._json.first_name + " " + profile._json.last_name,
 					provider: profile.provider,
 					pictureURL: 'https://graph.facebook.com/'+profile._json.id+'/picture?type=large',
 					json_info: profile._json
