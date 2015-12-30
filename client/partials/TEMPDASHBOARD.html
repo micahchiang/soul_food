@@ -1,5 +1,6 @@
 <h1>this is the dashboard</h1>
 <div ng-controller='dashboardController'>
+  <button ng-click='logout()'>logout</button>
   <h1>Hello email:<span ng-bind='user.email'></span></h1>
   <h3>Your name is : <span ng-bind='user.name'></span></h3>
   <img src='{{user.pictureURL}}'/>
@@ -13,5 +14,42 @@
 	  	<li>{{friend.name}}</li>
 	  </ul>
   </div>
-  <button ng-click='logout()'>logout</button>
+  <div class="Events">
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Title</th>
+        <th>Location</th>
+        <th>description</th>
+        <th>Type of food</th>
+        <th>Created by</th>
+        <th>Total Comments</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="event in events | filter:filter_event | orderBy: 'created_at' : reverse" >
+        <td ng-bind="event.date"></td>
+        <td ng-bind="event.time"></td>
+        <td> <a href="#/event/{{event._id}}"><span ng-bind='event.title'></span></a> </td>
+        <td ng-bind="event.location"></td>
+        <td ng-bind="event.description"></td>
+        <td ng-bind="event.type_of_food"></td>
+        <td> <a ng-href="#/user/{{event.user._id}}"><span ng-bind='event.user.name'> </td>
+        <td ng-bind="event.comments"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  <h2>Add a new Event</h2>
+  <form ng-submit="addEvent()">
+      <p>Event Title: <input type= "text" name="title" value="title" ng-model="newEvent.title"></p>
+      <p>Event Date: <input type="text" name="date" value="date" ng-model="newEvent.date"></p>
+      <p>Event Time: <input type="text" name="time" value="time" ng-model="newEvent.time"></p>
+      <p>Event Location: <input type="location" name="location" value="location" ng-model="newEvent.location"></p>
+      <p>Event Description: <textarea ng-model="newEvent.description"></textarea></p>
+      <p>Type of food: <input type="text" name="type_of_food" value="type_of_food" ng-model="newEvent.type_of_food"></p>
+      <input type="submit" value="Submit">
+  </form>
 </div>

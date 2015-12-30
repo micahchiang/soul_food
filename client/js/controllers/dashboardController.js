@@ -1,4 +1,4 @@
-soulFood.controller('dashboardController', function($scope, $location, userFactory){
+soulFood.controller('dashboardController', function($scope, $location, userFactory, eventFactory){
   $scope.user = {};
   userFactory.getUser(function(data){
     console.log(data);
@@ -19,4 +19,23 @@ soulFood.controller('dashboardController', function($scope, $location, userFacto
     userFactory.logoutUser();
     $location.url('/');
   }
+  $scope.events =[];
+  var getEventList = function() {
+		eventFactory.getEvents(function(data) {
+			$scope.events = data;
+      console.log($scope.events);
+		})
+	}
+  getEventList();
+  $scope.addEvent = function()
+	{
+    console.log($scope.newEvent);
+		$scope.newEvent.user = $scope.user;
+    console.log($scope.newEvent.user);
+		$scope.newEvent.posts = 0;
+		eventFactory.addEvent($scope.newEvent, function(){
+			getEventList();
+		});
+    $scope.newEvent = {};
+	}
 });

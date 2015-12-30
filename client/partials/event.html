@@ -1,23 +1,23 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>View page for Event</title>
-  </head>
-  <body>
-    <h3>Event title</h3>
-    <ul>
-      <li>Time</li>
-      <li>Date</li>
-      <li>Description</li>
-    </ul>
-    <div class="comments">
-      <p ng-bind="errors.message"></p>
-      <form ng-submit="addComment(event._id)">
-        <p>Your Comment: <textarea ng-model="new_comment.comment"></textarea></p>
-        <a ng-href="#/">Cancel</a>
-        <input type="submit" value="Submit">
-      </form>
-    </div>
-  </body>
-</html>
+<div ng-controller="eventsController">
+  <div ng-repeat="event in events | filter:filter_event | orderBy: 'created_at'">
+        <strong>Date:</strong><p ng-bind="event.date"></p>
+        <strong>Time:</strong><p ng-bind="event.time"></p>
+        <strong>Title</strong><p><span ng-bind='event.title'></span></a> </p>
+        <strong>Location</strong><p ng-bind="event.location"></p>
+        <strong>Description</strong><p ng-bind="event.description"></p>
+        <strong>Type of Food</strong><p ng-bind="event.type_of_food"></p>
+        <strong>Creator Name</strong><p> <a ng-href="#/user/{{event.user._id}}"><span ng-bind='event.user.name'></a></p>
+          <!-- start comments-->
+        <div class="comments">
+          <h4>Comment here</h4>
+          <form ng-submit='addComment(newComment, event._id)'>
+            <label><textarea ng-model="newComment.content" rows="8" cols="40"></textarea></label>
+            <button>Comment</button>
+          </form>
+        </div>
+				<div ng-repeat="comment in comments">
+			       <strong><a ng-href="#/user/{{comment.user._id}}" ><span ng-bind="comment.user.name"></span></a> said at <span ng-bind="comment.created_at | date"></span>:</strong>
+             <p><span ng-bind="comment.content"></span></p>
+        </div>
+  </div>
+</div>

@@ -1,11 +1,18 @@
 soulFood.factory('userFactory' , function($http){
   var user = {};
   var error = {};
+  var loginError = {};
   return{
     createUser : function(input, callback){
       console.log('factory trying to create the user', input);
       $http.post('/users', input).then(function(response){
         console.log(response);
+        if(response.data.err){
+          console.log('error!');
+          loginError.message = response.data.err;
+          console.log(error);
+          callback(response.data);
+        }
       })
     },
     loginUser: function(input, callback){

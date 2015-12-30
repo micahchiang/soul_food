@@ -5,7 +5,10 @@ var UserSchema = new mongoose.Schema({
 		name: String,
     email: String,
     password: String,
+		location: String,
     tastes: [],
+		events: {type: Number, trim:true},
+  	comments: {type: Number, trim:true},
   	activity_count: Number,
 		authId: Number,
 		friends: [],
@@ -25,3 +28,5 @@ UserSchema.methods.validPassword = function(password) {
 
 
 var User = mongoose.model('User', UserSchema);
+UserSchema.path('email').required(true, "Email field is required");
+UserSchema.path('password').required(true, "Password field is required");
