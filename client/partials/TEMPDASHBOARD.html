@@ -1,20 +1,24 @@
-<h1>this is the dashboard</h1>
-<div ng-controller='dashboardController'>
-  <button ng-click='logout()'>logout</button>
-  <h1>Hello email:<span ng-bind='user.email'></span></h1>
-  <h3>Your name is : <span ng-bind='user.name'></span></h3>
+<div id = 'wrapper' ng-controller='dashboardController'>
+  <header>
+    <h2>Welcome, <span ng-bind='user.name'></span>
+    <button class = 'btn' ng-href = '#/events'>events</button> 
+    <button class = 'btn' ng-click='logout()'>logout</button>   
+  </header>
+<div id = 'bodywrapper'>
+  <div id = 'userinfo'>
   <img src='{{user.pictureURL}}'/>
+  <h5>your email:<span ng-bind='user.email'></span></h5>
+  </div>
+  <!-- <h3>Your name is : <span ng-bind='user.name'></span></h3> -->
+<div id = 'constraint'>
+ <div id = 'friendbox'>
   <h2>Available Friends</h2>
   <ul ng-repeat="person in persons">
   	<li ng-model="person">{{person.name}} <button ng-click="addFriend(person, user)">Add Friend</button></li>
   </ul>
-  <h2>Friends List</h2>
-  <div >
-	  <ul ng-repeat="friend in user.friends">
-	  	<li>{{friend.name}}</li>
-	  </ul>
-  </div>
-  <div class="Events">
+</div>
+  <div id = 'eventsbox' class="Events">
+    <h2>Upcoming Events</h2>
   <table>
     <thead>
       <tr>
@@ -42,14 +46,26 @@
     </tbody>
   </table>
 </div>
+<div id = 'friendlist'>
+  <h2>Friends List</h2>
+  <div >
+	  <ul ng-repeat="friend in user.friends">
+	  	<li>{{friend.name}}</li>
+	  </ul>
+  </div>
+</div>
+</div>
+<div id = 'neweventbox'>
   <h2>Add a new Event</h2>
   <form ng-submit="addEvent()">
-      <p>Event Title: <input type= "text" name="title" value="title" ng-model="newEvent.title"></p>
-      <p>Event Date: <input type="text" name="date" value="date" ng-model="newEvent.date"></p>
-      <p>Event Time: <input type="text" name="time" value="time" ng-model="newEvent.time"></p>
-      <p>Event Location: <input type="location" name="location" value="location" ng-model="newEvent.location"></p>
-      <p>Event Description: <textarea ng-model="newEvent.description"></textarea></p>
-      <p>Type of food: <input type="text" name="type_of_food" value="type_of_food" ng-model="newEvent.type_of_food"></p>
+      <label>Event Title:</label> <input type= "text" name="title" value="title" ng-model="newEvent.title">
+      <label>Event Date:</label> <input type="text" name="date" value="date" ng-model="newEvent.date">
+      <label>Event Time:</label> <input type="text" name="time" value="time" ng-model="newEvent.time">
+      <label>Event Location:</label> <input type="location" name="location" value="location" ng-model="newEvent.location">
+      <label>Event Description:</label> <textarea ng-model="newEvent.description"></textarea>
+      <label>Type of food:</label> <input type="text" name="type_of_food" value="type_of_food" ng-model="newEvent.type_of_food">
       <input type="submit" value="Submit">
   </form>
+</div>
+</div>
 </div>

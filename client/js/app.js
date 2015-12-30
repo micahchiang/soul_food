@@ -14,10 +14,10 @@ var soulFood = angular.module('soulFood', ['ngRoute', 'routeStyles'])
       templateUrl: '/partials/add.html', css: 'css/add.css'
     })
     .when('/dashboard', {
-      templateUrl: '/partials/dashboard.html'
+      templateUrl: '/partials/TEMPDASHBOARD.html', css: 'css/dash.css'
     })
     .when('/tempdashboard', {
-      templateUrl: '/partials/TEMPDASHBOARD.html'
+      templateUrl: '/partials/TEMPDASHBOARD.html', css: 'css/dash.css'
     })
     .when('/chatRoom', {
       templateUrl: '/partials/chatRoom.html'
