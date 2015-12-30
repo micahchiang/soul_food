@@ -1,59 +1,71 @@
-<div ng-controller='dashboardController'>
-  <button ng-click='logout()'>logout</button>
-    <header>
-    <h1>Welcome, <span ng-bind='user.name'></span>!</h1>
-    <div id = 'linkbox'>
-    <a id = 'linkone' class = 'headerlinks' href="#/events">Events</a> | <a class = 'headerlinks' href="#/logout">logout</a>
-    </div>
+<div id = 'wrapper' ng-controller='dashboardController'>
+  <header>
+    <h2>Welcome, <span ng-bind='user.name'></span>
+    <button class = 'btn' ng-href = '#/events'>events</button> 
+    <button class = 'btn' ng-click='logout()'>logout</button>   
   </header>
-    <div class="profile">
-      <img src='{{user.pictureURL}}'/>
-      <ul>
-        <li><span ng-bind='user.email'></span></li>
-        <li>Tastes</li>
-      </ul>
-    </div>
-    <div class="itenarary">
-      <h2>Friend List</h2>
-          <table> <!-- This table will be redone once our front and back ends are connected. will just ng-repeat eventually -->
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="friend in user.friends">
-            <td>{{friend.name}}</td>
-            <td>{{friend.email}}</td>
-            <td><a href="#">View</a> | <a href="#">Delete</a></td>
-          </tr>
-        </tbody>
-      </table>
-      <h2>Upcoming Events</h2> <!-- divs below will be redone once connected to db. should use ng-repeat eventually -->
-      <div id = 'events_box'>
-        <div class = 'events'>Replace with DB data</div>
-        <div class = 'events'>Replace with DB data</div>
-        <div class = 'events'>Replace with DB data</div>
-        <div class = 'events'>Replace with DB data</div>
-        <div class = 'events'>Replace with DB data</div>
-        <div class = 'events'>Replace with DB data</div>
-        <div class = 'events'>Replace with DB data</div>
-        <div class = 'events'>Replace with DB data</div>
-      </div>
-      <button><a href='#/add'>Create New Event</a></button>
-    </div>
-    <h4>Add a taste preference to your profile!</h4>
-    <form ng-submit='addTaste(newTaste)'>
-      <select ng-model='newTaste.taste'>
-        <option>American</option>
-        <option>Chinese</option>
-        <option>Mediterranean</option>
-        <option>Mexican</option>
-        <option>Italian</option>
-        <option>Indian</option>
-      </select>
-      <input type="submit">
-    </form>
+<div id = 'bodywrapper'>
+  <div id = 'userinfo'>
+  <img src='{{user.pictureURL}}'/>
+  <h5>your email:<span ng-bind='user.email'></span></h5>
+  </div>
+  <!-- <h3>Your name is : <span ng-bind='user.name'></span></h3> -->
+<div id = 'constraint'>
+ <div id = 'friendbox'>
+  <h2>Available Friends</h2>
+  <ul ng-repeat="person in persons">
+    <li ng-model="person">{{person.name}} <button ng-click="addFriend(person, user)">Add Friend</button></li>
+  </ul>
+</div>
+  <div id = 'eventsbox' class="Events">
+    <h2>Upcoming Events</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Title</th>
+        <th>Location</th>
+        <th>description</th>
+        <th>Type of food</th>
+        <th>Created by</th>
+        <th>Total Comments</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="event in events | filter:filter_event | orderBy: 'created_at' : reverse" >
+        <td ng-bind="event.date"></td>
+        <td ng-bind="event.time"></td>
+        <td> <a href="#/event/{{event._id}}"><span ng-bind='event.title'></span></a> </td>
+        <td ng-bind="event.location"></td>
+        <td ng-bind="event.description"></td>
+        <td ng-bind="event.type_of_food"></td>
+        <td> <a ng-href="#/user/{{event.user._id}}"><span ng-bind='event.user.name'> </td>
+        <td ng-bind="event.comments"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id = 'friendlist'>
+  <h2>Friends List</h2>
+  <div >
+    <ul ng-repeat="friend in user.friends">
+      <li>{{friend.name}}</li>
+    </ul>
+  </div>
+</div>
+</div>
+<div id = 'neweventbox'>
+  <h2>Add a new Event</h2>
+  <form ng-submit="addEvent()">
+      <label>Event Title:</label> <input type= "text" name="title" value="title" ng-model="newEvent.title">
+      <label>Event Date:</label> <input type="text" name="date" value="date" ng-model="newEvent.date">
+      <label>Event Time:</label> <input type="text" name="time" value="time" ng-model="newEvent.time">
+      <label>Event Location:</label> <input type="location" name="location" value="location" ng-model="newEvent.location">
+      <label>Event Description:</label> <textarea ng-model="newEvent.description"></textarea>
+      <label>Type of food:</label> <input type="text" name="type_of_food" value="type_of_food" ng-model="newEvent.type_of_food">
+      <input type="submit" value="Submit">
+  </form>
+</div>
+</div>
 </div>
