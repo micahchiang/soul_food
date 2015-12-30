@@ -6,11 +6,11 @@
   <p>New? Join Soul Food today!</p>
     <!-- <label>First Name</label><input type = 'text' ng-model = 'newUser.first_name' name = 'firstname'>
     <label>Last Name</label><input type = 'text' ng-model = 'newUser.last_name' name = 'lastname'> -->
-    <label>Name</label><input type = 'text' ng-model = 'newUser.name' name = 'name'>
-    <label>Email</label><input type = 'text' ng-model = 'newUser.email' name = 'email'>
-    <label>Taste Preference</label>
-    <label>Password</label><input type = 'password' ng-model = 'newUser.password' name = 'password'>
-    <label>Confirm Password</label><input type = 'password'  name = 'confirm password'>
+    <div ng-if='loginError.message'><span ng-bind='loginError.message'></span></div>
+    <label>Name</label><input type = 'text' ng-model = 'newUser.name' name = 'name'required>
+    <label>Email</label><input type = 'text' ng-model = 'newUser.email' name = 'email'required>
+    <label>Password</label><input type = 'password' ng-model = 'newUser.password' name = 'password'required>
+    <label>Confirm Password</label><input type = 'password'  name = 'confirm password'required>
     <input class ='submission' type = 'submit' value = 'Register'>
   </form>
   </div>
@@ -19,8 +19,8 @@
   <form ng-submit='loginUser(userData)'>
     <p>Been here before? Login below.</p>
     <div ng-if='error.message'><span ng-bind='error.message'></span></div>
-    <label>Email</label><input type = 'text' ng-model='userData.email'>
-    <label>Password</label><input type = 'password' ng-model = 'userData.password'>
+    <label>Email</label><input type = 'text' ng-model='userData.email'required>
+    <label>Password</label><input type = 'password' ng-model = 'userData.password'required>
     <input class = 'submission' type ='submit' value = 'login'>
   </form>
   </div>

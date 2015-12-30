@@ -22,6 +22,12 @@ var soulFood = angular.module('soulFood', ['ngRoute', 'routeStyles'])
     .when('/chatRoom', {
       templateUrl: '/partials/chatRoom.html'
     })
+    .when('/user/:id', {
+		  templateUrl: '/partials/profile.html'
+	   })
+    .when('/event/:id', {
+  		templateUrl: 'partials/event.html'
+  	})
     .otherwise({
       redirectTo:'/'
     });

@@ -3,16 +3,11 @@ soulFood.factory('commentFactory', function($http)
 {
 	var factory = {};
 
-	factory.getCommentsByPostId = function (id, callback)
-	{
-		console.log(id);
-		$http.get('/getCommentsByPostId/' + id).success(function(output){ callback(output); });
+	factory.getCommentsById = function (id, callback)	{
+		$http.get('/getCommentsById/'+id).then(callback);
 	}
-
-	factory.addComment = function(data, callback)
-	{
-		$http.post('/addComment', data).success(function(output){ callback(output); });
+	factory.addComment = function(data, event_id, callback){
+		$http.post('/addComment/'+event_id, data).success(function(output){ callback(output); });
 	}
-
 	return factory;
 });

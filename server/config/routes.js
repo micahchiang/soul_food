@@ -1,7 +1,34 @@
 var users = require('../controllers/users');
+var events = require('./../controllers/events.js');
+var comments = require('./../controllers/comments.js');
 var passport = require('passport');
 module.exports = function(app) {
   app.post('/users', users.createUser);
+  //dashboard.html routes
+  app.post('/addEvent', function(req, res){
+    events.addEvent(req, res);
+  })
+  app.get('/getEvents', function(req, res){
+    events.getEvents(req, res);
+  })
+  //event.html routes
+  app.get('/getEventById/:id', function(req, res){
+    events.getEventById(req, res);
+  })
+  app.get('/getEventsById/:id', function(req, res){
+    events.getEventsById(req, res);
+  })
+  //comments.html routes
+  app.get('/getCommentsById/:id', function(req, res){
+    comments.getCommentsById(req, res);
+  })
+  app.post('/addComment/:id', function(req, res){
+    comments.addComment(req, res);
+  })
+  //user.html routes
+  app.get('/showUser/:any', function(req, res){
+    users.showUser(req, res);
+  })
   //OAUTH routes
   app.get("/auth/facebook", passport.authenticate("facebook"));
   app.get("/auth/facebook/callback",
