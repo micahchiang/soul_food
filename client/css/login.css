@@ -1,3 +1,23 @@
+/*#masterwrap{
+	position: absolute;
+    height: 200px;
+    width: 400px;
+    margin: -100px 0 0 -200px;
+    top: 50%;
+    left: 50%;
+}*/
+
+#formwrapper{
+	text-align: center;
+	/*border: 1px solid black;*/
+	position: absolute;
+    height: 630px;
+    width: 700px;
+	margin: -50px 0 0 -200px;
+    top: 15%;
+    left: 50%;  
+}
+
 #wrapper{
 	width: 100%;
 	background: url('/images/soul_foodbg.jpg') 50% 0 no-repeat fixed;

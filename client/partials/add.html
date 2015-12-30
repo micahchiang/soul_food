@@ -1,4 +1,5 @@
   <div id = 'wrapper'>
+    <div id = 'formwrapper'>
     <h1>Create a new event!</h1>
     <p ng-bind="errors.message"></p>
       <form ng-submit="addEvent()">
@@ -9,5 +10,6 @@
        <input id = 'submit' type="submit" value="Submit">
         <a id = 'goback' ng-href="#/dashboard">Cancel</a>      
       </form>
+    </div>
   </div>
 
