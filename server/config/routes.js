@@ -30,7 +30,9 @@ module.exports = function(app) {
     users.showUser(req, res);
   })
   //OAUTH routes
-  app.get("/auth/facebook", passport.authenticate("facebook"));
+  app.get("/auth/facebook", passport.authenticate("facebook",
+                                  {scope: ['email']
+  }));
   app.get("/auth/facebook/callback",
     passport.authenticate("facebook",
       { failureRedirect: "/", successRedirect:"/" }));

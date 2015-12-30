@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>User Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="css/dash.css">
-  </head>
-  <body>
+<div ng-controller='dashboardController'>
+  <button ng-click='logout()'>logout</button>
     <header>
-    <h1>Welcome, User!</h1>
+    <h1>Welcome, <span ng-bind='user.name'></span>!</h1>
     <div id = 'linkbox'>
     <a id = 'linkone' class = 'headerlinks' href="#/events">Events</a> | <a class = 'headerlinks' href="#/logout">logout</a>
     </div>
   </header>
     <div class="profile">
       <ul>
-        <li>Email</li>
+        <li><span ng-bind='user.email'></span></li>
         <li>Tastes</li>
       </ul>
     </div>
@@ -29,19 +23,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Tommy</td>
-            <td>tommy@yahoo.org</td>
-            <td><a href="#">View</a> | <a href="#">Delete</a></td>
-          </tr>
-          <tr>
-            <td>Eric</td>
-            <td>echou@aol.com</td>
-            <td><a href="#">View</a> | <a href="#">Delete</a></td>
-          </tr>
-          <tr>
-            <td>Jason</td>
-            <td>json@neopets.cn</td>
+          <tr ng-repeat="friend in user.friends">
+            <td>{{friend.name}}</td>
+            <td>{{friend.email}}</td>
             <td><a href="#">View</a> | <a href="#">Delete</a></td>
           </tr>
         </tbody>
@@ -57,7 +41,18 @@
         <div class = 'events'>Replace with DB data</div>
         <div class = 'events'>Replace with DB data</div>
       </div>
-      <button>Create New Event</button>
+      <button><a href='#/add'>Create New Event</a></button>
     </div>
-  </body>
-</html>
+    <h4>Add a taste preference to your profile!</h4>
+    <form ng-submit='addTaste(newTaste)'>
+      <select ng-model='newTaste.taste'>
+        <option>American</option>
+        <option>Chinese</option>
+        <option>Mediterranean</option>
+        <option>Mexican</option>
+        <option>Italian</option>
+        <option>Indian</option>
+      </select>
+      <input type="submit">
+    </form>
+</div>

@@ -3,7 +3,7 @@ var bcrypt   = require('bcrypt');
 
 var UserSchema = new mongoose.Schema({
 		name: String,
-    email: String,
+    email: {type: String, default: 'no@email.com'},
     password: String,
 		location: String,
     tastes: [],
@@ -29,4 +29,4 @@ UserSchema.methods.validPassword = function(password) {
 
 var User = mongoose.model('User', UserSchema);
 UserSchema.path('email').required(true, "Email field is required");
-UserSchema.path('password').required(true, "Password field is required");
+// UserSchema.path('password').required(true, "Password field is required");

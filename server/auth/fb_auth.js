@@ -8,7 +8,8 @@ var FACEBOOK_APP_SECRET = "143096a9f6d9086ae890b7df30861e72";
 passport.use(new FacebookStrategy({
 		clientID: FACEBOOK_APP_ID,
 		clientSecret: FACEBOOK_APP_SECRET,
-		callbackURL: "/auth/facebook/callback"
+		callbackURL: "/auth/facebook/callback",
+		profileFields: ['email']
 	},
 	function(accessToken, refreshToken, profile, done) {
 			console.log('fbauth');
@@ -20,7 +21,7 @@ passport.use(new FacebookStrategy({
 			if(!user) {
 				user = new User({
 					authId: profile.id,
-					email: profile._json.id, //should change this later
+					email: profile._json.email,
 					name: profile.displayName,
 					provider: profile.provider,
 					pictureURL: 'https://graph.facebook.com/'+profile._json.id+'/picture?type=large',

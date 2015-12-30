@@ -20,7 +20,7 @@ passport.use(new GoogleStrategy({
 			if(!user) {
 				user = new User({
 					authId: profile.id,
-					email: profile._json.id, //should change this later
+					email: profile._json.emails[0].value, 
 					pictureURL: profile._json.image.url,
 					name: profile.displayName,
 					provider: profile.provider,

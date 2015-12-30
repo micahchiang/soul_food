@@ -22,6 +22,7 @@ module.exports = (function(){
           var user = new User({name: req.body.name, email: req.body.email, password: req.body.password});
           user.save(function(err){
             if(err){
+              console.log('error trying to create!');
               res.json({err: err});
             } else {
               res.json(true);

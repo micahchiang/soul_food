@@ -8,9 +8,9 @@
     <label>Last Name</label><input type = 'text' ng-model = 'newUser.last_name' name = 'lastname'> -->
     <div ng-if='loginError.message'><span ng-bind='loginError.message'></span></div>
     <label>Name</label><input type = 'text' ng-model = 'newUser.name' name = 'name'required>
-    <label>Email</label><input type = 'text' ng-model = 'newUser.email' name = 'email'required>
+    <label>Email</label><input type = 'email' ng-model = 'newUser.email' name = 'email'required>
     <label>Password</label><input type = 'password' ng-model = 'newUser.password' name = 'password'required>
-    <label>Confirm Password</label><input type = 'password'  name = 'confirm password'required>
+    <label>Confirm Password</label><input type = 'password'  name = 'confirm password' ng-model='newUser.confirmPassword' required>
     <input class ='submission' type = 'submit' value = 'Register'>
   </form>
   </div>

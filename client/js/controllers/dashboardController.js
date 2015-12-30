@@ -5,7 +5,7 @@ soulFood.controller('dashboardController', function($scope, $location, userFacto
     $scope.user = data;
   })
   if(!$scope.user.email){
-    $location.url('/');
+    $location.url('login');
   }
   userFactory.getAllUsers(function(data){
     console.log(data, 'all user data');
