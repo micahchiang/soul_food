@@ -47,6 +47,7 @@ soulFood.factory('userFactory' , function($http){
         if(response.data){
           console.log('there is a user');
           user = response.data;
+          console.log(user);
           callback(response);
         } else {
           console.log('no user!');

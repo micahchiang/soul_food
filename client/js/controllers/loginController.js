@@ -5,7 +5,7 @@ soulFood.controller('loginController', function($scope, $location, userFactory){
   userFactory.checkLogin(function(response){
     console.log(response);
     if(response.data){
-      $location.url('/dashboard');
+      userFactory.logoutUser();
     }
   });
   $scope.createUser = function(input){
