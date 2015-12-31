@@ -10,6 +10,7 @@ $scope.userdata = [];
 		profileFactory.getUser(id, function(data)
 		{
 			$scope.userdata = data;
+			console.log($scope.userdata);
 		});
 	}
 
@@ -18,6 +19,7 @@ $scope.userdata = [];
   $scope.events =[];
     var getEventListById = function(id)
     {
+			console.log(id);
       profileFactory.getEventsById(id,function(data)
       {
         $scope.events = data;

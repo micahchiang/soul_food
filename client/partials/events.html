@@ -1,0 +1,29 @@
+<h1>this is the dashboard</h1>
+<div ng-controller='showAllEventsController'>
+  <button ng-click='logout()'>logout</button>
+  <h1>Hello email:<span ng-bind='user.email'></span></h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Title</th>
+        <th>Location</th>
+        <th>description</th>
+        <th>Type of food</th>
+        <th>Created by</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="event in events | filter:filter_event | orderBy: 'created_at' : reverse" >
+        <td ng-bind="event.date"></td>
+        <td ng-bind="event.time"></td>
+        <td> <a href="#/event/{{event._id}}"><span ng-bind='event.title'></span></a> </td>
+        <td ng-bind="event.location"></td>
+        <td ng-bind="event.description"></td>
+        <td ng-bind="event.type_of_food"></td>
+        <td> <a ng-href="#/user/{{event.user._id}}"><span ng-bind='event.user.name'> </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

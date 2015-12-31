@@ -1,10 +1,9 @@
 <div class="container" id="user" ng-controller="profileController">
 		<div ng-repeat="user in userdata">
-			<h3>Username: <span ng-bind='user.username'></span></h3>
-			<h4>Posted...</h4>
+			<h3>Username: <span ng-bind='user.name'></span></h3>
+			<h4>Created...</h4>
 			<ul>
 				<li><span ng-bind='user.events'></span> Events</li>
-				<li><span ng-bind='user.comments'></span> Comments</li>
 			</ul>
 		</div>
     <table>
@@ -26,8 +25,6 @@
           <td ng-bind="event.location"></td>
           <td ng-bind="event.description"></td>
           <td ng-bind="event.type_of_food"></td>
-          <td> <a ng-href="#/user/{{event.user.name}}"><span ng-bind='event.user.name'> </td>
-          <td ng-bind="event.comments"></td>
         </tr>
       </tbody>
     </table>

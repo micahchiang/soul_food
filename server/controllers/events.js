@@ -27,8 +27,10 @@ module.exports = (function(){
 				    res.json(events);
       })
 		},
-    getEventsById: function(req, res){
-      Event.find({_id: req.params.id}).populate('comments').populate('comments.user').populate('user').exec(function(err, events){
+		getEventsById: function(req, res){
+			console.log(req.params.id);
+      Event.find({user:req.params.id}).populate('comments').populate('comments.user').populate('user').exec(function(err, events){
+				console.log('here i am',events);
 				    res.json(events);
 			})
 		},

@@ -1,8 +1,8 @@
 <div id = 'wrapper' ng-controller='dashboardController'>
   <header>
     <h2>Welcome, <span ng-bind='user.name'></span>
-    <button id = 'btn1' class = 'btn' ng-href = '#/events'>events</button> 
-    <button id = 'btn2' class = 'btn' ng-click='logout()'>logout</button>   
+    <button id = 'btn1' class = 'btn' ng-href = '#/events'>events</button>
+    <button id = 'btn2' class = 'btn' ng-click='logout()'>logout</button>
   </header>
 <div id = 'bodywrapper'>
   <div id = 'userinfo'>
@@ -29,7 +29,6 @@
         <th>description</th>
         <th>Type of food</th>
         <th>Created by</th>
-        <th>Total Comments</th>
       </tr>
     </thead>
     <tbody>
@@ -41,7 +40,6 @@
         <td ng-bind="event.description"></td>
         <td ng-bind="event.type_of_food"></td>
         <td> <a ng-href="#/user/{{event.user._id}}"><span ng-bind='event.user.name'> </td>
-        <td ng-bind="event.comments"></td>
       </tr>
     </tbody>
   </table>

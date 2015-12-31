@@ -7,8 +7,8 @@ soulFood.factory('profileFactory', function($http)
 
 		$http.get('/getEventsById/' + id).success(function(output){ callback(output); });
 	}
-  factory.getUser = function(data, callback){
-  		$http.get('/showUser/' + data).success(function(output){ callback(output); });
+  factory.getUser = function(id, callback){
+  		$http.get('/showUser/' + id).success(function(output){ callback(output); });
   	}
 	return factory;
 });

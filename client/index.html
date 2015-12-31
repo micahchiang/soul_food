@@ -15,6 +15,7 @@
     <script src="/js/controllers/dashboardController.js"></script>
     <script src="/js/controllers/eventsController.js"></script>
     <script src="/js/controllers/profileController.js"></script>
+		<script src="/js/controllers/showAllEventsController.js"></script>
     <script src="/js/factories/userFactory.js"></script>
     <script src="/js/factories/commentFactory.js"></script>
     <script src="/js/factories/eventFactory.js"></script>
@@ -29,7 +30,7 @@
     	// socket.emit('message', {history: history});
     </script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript">	
+    <script type="text/javascript">
     	$(document).ready(function (){
             socket.on('serverMsg', function (data){
             $("#chatbox").append("<p>" + data.message + "</p>");
@@ -50,7 +51,7 @@
 	<body>
 		<div class="col-sm-12">
       <p id="partials">
-        <a href="#/">Home</a> | <a href="#/orders">Events</a> | <a href="#/login">Login/Logout</a> | <a href="#/dashboard">Dashboard</a> |<a href="#/chatRoom">Chat</a> 
+        <a href="#/">Home</a> | <a href="#/events">Events</a> | <a href="#/login">Login/Logout</a> | <a href="#/dashboard">Dashboard</a> |<a href="#/chatRoom">Chat</a>
       </p>
 			<div ng-view=""></div>
 		</div>

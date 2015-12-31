@@ -26,7 +26,7 @@ module.exports = function(app) {
     comments.addComment(req, res);
   })
   //user.html routes
-  app.get('/showUser/:any', function(req, res){
+  app.get('/showUser/:id', function(req, res){
     users.showUser(req, res);
   })
   //OAUTH routes

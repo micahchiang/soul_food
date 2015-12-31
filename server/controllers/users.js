@@ -52,7 +52,8 @@ module.exports = (function(){
     },
     showUser: function(req, res)
 		{
-			User.find({email: req.params.any}, function(err, results){
+      console.log(req.params.id);
+			User.find({_id: req.params.id}, function(err, results){
 				if(err) {
 					res.json({status:'failed', err:err})
 				} else {

@@ -22,6 +22,9 @@ var soulFood = angular.module('soulFood', ['ngRoute', 'routeStyles'])
     .when('/event/:id', {
   		templateUrl: 'partials/event.html'
   	})
+    .when('/events', {
+      templateUrl: '/partials/events.html', controller: 'showAllEventsController', css: 'css/main.css'
+    })
     .otherwise({
       redirectTo:'/'
     });
