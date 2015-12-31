@@ -40,8 +40,8 @@ app.use(express.static(path.join(__dirname, './client')));
 
 
 
-var server = app.listen(6789, function() {
-  console.log('soul food on: 6789');
+var server = app.listen(8000, function() {
+  console.log('soul food on: 8000');
 });
 
 var io = require('socket.io')(server);
