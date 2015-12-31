@@ -1,12 +1,12 @@
 soulFood.controller('dashboardController', function($scope, $location, userFactory, eventFactory){
   $scope.user = {};
-  userFactory.getUser(function(data){
-    console.log(data);
-    $scope.user = data;
-  })
-  if(!$scope.user.email){
-    $location.url('login');
-  }
+  userFactory.checkLogin(function(response){
+    console.log('check login', response);
+    if(!response.data){
+      $location.url('login');
+    }
+    $scope.user = response.data;
+  });
   userFactory.getAllUsers(function(data){
     console.log(data, 'all user data');
     $scope.persons = data;
