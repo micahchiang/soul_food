@@ -7,6 +7,11 @@ var express = require("express"),
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
+
+//socket io
+// var http = require('http').Server(app);
+
+
 //passport and strategies
 var passport = require('passport');
 var passportLocal = require('passport-local');
@@ -32,6 +37,31 @@ require('./server/config/routes.js')(app);
 
 // set up a static file server that points to the "client" directory
 app.use(express.static(path.join(__dirname, './client')));
-app.listen(8000, function() {
+
+
+
+var server = app.listen(8000, function() {
   console.log('soul food on: 8000');
 });
+
+var io = require('socket.io')(server);
+
+var history = [];
+
+io.sockets.on('connection', function (socket) {
+  console.log("A user has been connected");
+  console.log(socket.id);
+
+  socket.on('message', function(data){
+    console.log('in server passing message' +  ' ' + data);
+    var message = data.user +' says: ' + data.message;
+    io.emit('serverMsg', {message: message});
+    io.emit('chatHistory', {history: history})
+    history.push(message);
+  })
+  //all the socket code goes in here!
+})
+console.log('history messages' + ' ' + history);
+// io.on('connection', function(socket){
+// 	console.log('user has been connected');
+// })

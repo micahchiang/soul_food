@@ -14,7 +14,7 @@ var soulFood = angular.module('soulFood', ['ngRoute', 'routeStyles'])
       templateUrl: '/partials/dashboard.html', css: 'css/dash.css'
     })
     .when('/chatRoom', {
-      templateUrl: '/partials/chatRoom.html'
+      templateUrl: '/partials/chatRoom.html', css: 'css/chat.css'
     })
     .when('/user/:id', {
 		  templateUrl: '/partials/profile.html'

@@ -19,6 +19,32 @@
     <script src="/js/factories/commentFactory.js"></script>
     <script src="/js/factories/eventFactory.js"></script>
     <script src="/js/factories/profileFactory.js"></script>
+
+    <script src="/js/controllers/chatController.js"></script>
+
+    <!-- // <script src="https://cdn.socket.io/socket.io-1.3.7.js"></script> -->
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script>
+    var socket = io.connect('http://localhost:8000');
+    	// socket.emit('message', {history: history});
+    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">	
+    	$(document).ready(function (){
+            socket.on('serverMsg', function (data){
+            $("#chatbox").append("<p>" + data.message + "</p>");
+        });
+
+        socket.on('chatHistory', function(data){
+	 		for(var message in data.history){
+	 			$("#message").append("<p>" + data.history[message] + "</p>");
+	 		}
+	 	});
+    });
+
+    </script>
+    <!-- // <script type="text/javascript" src="libs/angular-socket-io/socket.js"></script> -->
+
 		<title ng-bind="title">myApp</title>
 	</head>
 	<body>

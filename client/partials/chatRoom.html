@@ -1,1 +1,17 @@
-<h1>ChatRoom</h1>
+<div ng-controller="chatController" id="container">
+	<h1>Chat Room</h1>
+	<p>Current User: {{user.name}}</p>
+	<div id="chatbox">
+		<!-- <span ng-bind="message.message"></span>
+		<p>{{message}}</p>
+		<div ng-repeat="message in messages">
+			<p>{{message.message}}</p>
+			<p>{{message}}</p>
+		</div> -->
+	</div>
+	<form ng-submit="createMessage(newMessage)">
+		<input type="text" name="message" ng-model="newMessage.message" placeholder="Enter your message here">
+		<input type="submit" value="Submit">
+	</form>
+</div>
+

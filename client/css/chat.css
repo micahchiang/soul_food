@@ -1,0 +1,10 @@
+#container {
+	color: white;
+}
+
+#chatbox {
+	color: white;
+	width: 700px;
+	height: 400px;
+	border: 1px solid white;
+}
