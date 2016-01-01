@@ -17,13 +17,13 @@ var soulFood = angular.module('soulFood', ['ngRoute', 'routeStyles'])
       templateUrl: '/partials/chatRoom.html', css: 'css/chat.css'
     })
     .when('/user/:id', {
-		  templateUrl: '/partials/profile.html'
+		  templateUrl: '/partials/profile.html', css: 'css/profile.css'
 	   })
     .when('/event/:id', {
-  		templateUrl: 'partials/event.html'
+  		templateUrl: 'partials/event.html', css: 'css/event.css'
   	})
     .when('/events', {
-      templateUrl: '/partials/events.html', controller: 'showAllEventsController', css: 'css/main.css'
+      templateUrl: '/partials/events.html', controller: 'showAllEventsController', css: 'css/events.css'
     })
     .otherwise({
       redirectTo:'/'

@@ -4,6 +4,7 @@
 	width: 100%;
 	font-family: Arial;
 	color: white;
+/*	border: 1px solid red;*/
 }
 
 header {
@@ -47,7 +48,7 @@ header {
 #bodywrapper{
 	/*border: 1px solid black;*/
 	width: 100%;
-	position: relative;
+	/*position: relative;*/
 	margin-top: 50px;
 }
 
@@ -72,7 +73,6 @@ header {
 	position: relative;
 	border-radius: 5px;
 	background: rgba(154, 192, 205, .6);
-
 }
 #friendlist{
 	border: 1px solid black;
@@ -82,7 +82,8 @@ header {
 	margin-top: -203px;
 	height: 200px;
 	background: rgba(154, 192, 205, .6);
-	padding-left: 5px
+	padding-left: 5px;
+	/*position: fixed;*/
 }
 
 #neweventbox{
@@ -98,7 +99,7 @@ header {
 	display: inline-block;
 }
 #constraint {
-	/*border: 1px solid black;*/ /*this div is to temporarily constrain the child divs from reformatting on screen size change.*/
+/*	border: 1px solid black;*/ /*this div is to temporarily constrain the child divs from reformatting on screen size change.*/
 	width: 1200px;
 }
 
