@@ -12,7 +12,7 @@ passport.use(new FacebookStrategy({
 		profileFields: ['email', 'name']
 	},
 	function(accessToken, refreshToken, profile, done) {
-			console.log('fbauth');
+			// console.log('fbauth');
 		User.findOne({ authId: profile.id }, function(err, user) {
 			if(err) {
 				return done(err);

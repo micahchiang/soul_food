@@ -37,8 +37,8 @@
         });
 
         socket.on('chatHistory', function(data){
-	 		for(var message in data.history){
-	 			$("#message").append("<p>" + data.history[message] + "</p>");
+	 		for(var i=0; i<data.history.length; i++){
+	 			$("#chatbox").append("<p>" + data.history[i] + "</p>");
 	 		}
 	 	});
     });

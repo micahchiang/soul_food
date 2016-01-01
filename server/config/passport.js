@@ -33,7 +33,7 @@ passport.deserializeUser(function(id, done){
   // done(null, {id:  id, name: id});
   console.log(id);
   User.findOne({_id: id}, function(err, user){
-    console.log(user);
+    // console.log(user);
     done(null, user);
   });
 });
