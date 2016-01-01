@@ -8,10 +8,6 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
 
-//socket io
-// var http = require('http').Server(app);
-
-
 //passport and strategies
 var passport = require('passport');
 var passportLocal = require('passport-local');
@@ -43,25 +39,38 @@ app.use(express.static(path.join(__dirname, './client')));
 var server = app.listen(8000, function() {
   console.log('soul food on: 8000');
 });
-
+////socket io
 var io = require('socket.io')(server);
-
 var history = [];
+var currentUsers;
 
 io.sockets.on('connection', function (socket) {
-  console.log("A user has been connected");
-  console.log(socket.id);
+  console.log("A user has been connected with socket id: " + socket.id);
 
   socket.on('message', function(data){
-    console.log('in server passing message' +  ' ' + data);
+    currentUsers = data.user;
+    console.log('in server passing message' +  ' ' + data.message);
     var message = data.user +' says: ' + data.message;
     io.emit('serverMsg', {message: message});
-    io.emit('chatHistory', {history: history})
     history.push(message);
+  });
+  
+  socket.on('history', function(input){
+    currentUsers = input.name;
+    var message = input.name + " has entered the chat";
+    history.push(message);
+    io.emit('chatHistory', {history: history});
   })
-  //all the socket code goes in here!
-})
-console.log('history messages' + ' ' + history);
-// io.on('connection', function(socket){
-// 	console.log('user has been connected');
-// })
+
+  socket.on('logout', function(){
+    console.log('logging out');
+  })
+
+  // socket.on("disconnect", function(data){
+  //   var message = currentUsers[socket.id] + " has left the chat";
+  //   history.push(message);
+  //   io.emit('serverMsg', {msg: message})
+  //   delete currentUsers[socket.id];
+  // });
+});
+

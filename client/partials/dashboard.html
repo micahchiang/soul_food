@@ -13,7 +13,7 @@
 <div id = 'constraint'>
  <div id = 'friendbox'>
   <h2>Available Friends</h2>
-  <ul ng-repeat="person in persons">
+  <ul ng-repeat="person in persons | unique: 'name'">
     <li ng-model="person">{{person.name}} <button ng-click="addFriend(person, user)">Add Friend</button></li>
   </ul>
 </div>
