@@ -1,6 +1,9 @@
 <div ng-controller="chatController" id="container">
-	<h1>Chat Room</h1>
-	<p>Current User: <span ng-bind="user.name"></span></p>
+	<h1>The <span style ='font-family:"Rock Salt"'>Soul Food</span> Chat Room</h1>
+		<div id = 'infobox'>
+		<h4>Connect with others and coordinate meetups</h4>
+		<p>Current User: <span ng-bind="user.name"></span></p>
+		</div>
 	<div id="chatbox">
 	</div>
 	<form ng-submit="createMessage(newMessage)">

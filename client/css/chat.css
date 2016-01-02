@@ -1,6 +1,18 @@
 #container {
 	color: white;
+	width: 100%;
+	border: 1px solid white;
+	background: url('/images/chatbg.jpg') 50% no-repeat fixed;
+	background-size: cover;
 }
+	h1{
+		background-color: rgba(192, 192, 192, .7)
+	}
+	#infobox{
+		background-color: rgba(192, 192, 192, .7);
+		width: 400px;
+	}
+
 
 #chatbox {
 	color: white;
@@ -9,6 +21,7 @@
 	border: 1px solid white;
 	overflow: scroll;
 	padding-left: 25px;
+	background-color: rgba(154, 192, 205, .8);
 }
 
 #chatinput {

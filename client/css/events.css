@@ -1,8 +1,10 @@
 #allevents {
 	width: 100%;
 	border: 1px solid black;
-	/*background: url('/images/tableset.jpg') no-repeat fixed;
-	background-size: cover;*/
+	height: 700px;
+	overflow: scroll;
+	background: url('/images/eventbg1.jpg') 50% no-repeat fixed;
+	background-size: cover;
 }
 	h2{
 		width: 100%;
@@ -19,7 +21,7 @@
 	/*margin-left: 50px;*/
 	position: relative;
 	border-radius: 5px;
-	background: rgba(154, 192, 205, .6);
+	background: rgba(201, 175, 148, .6);
 	border-collapse: collapse;
 	}
 		table td{
