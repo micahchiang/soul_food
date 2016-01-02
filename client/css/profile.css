@@ -1,6 +1,7 @@
 #user{
 	width: 100%;
-	/*border: 1px solid black;*/
+	height: 700px;
+	border: 1px solid black;
 }
 	h4{
 		color: white;
