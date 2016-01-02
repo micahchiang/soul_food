@@ -67,8 +67,20 @@ soulFood.factory('userFactory' , function($http){
       console.log(user, 'current user in user')
       console.log('factory trying to add friend to the user', friend);
       $http.post('/addFriend', friend).then(function(response){
-        // console.log(response);
+        console.log(response);
       })
+    },
+
+    removeFriend: function(friendId, userId, friendIndex, callback){
+      console.log(friendId, 'friend id in factory');
+      console.log(userId, 'user id in factory');
+      console.log(friendIndex, 'current index friend object');
+      var user_friendId = {
+        friend_id: friendId,
+        user_id: userId,
+        friend_index: friendIndex
+      };
+      $http.post('/removeFriend', user_friendId).then(callback);
     }
   }
 })

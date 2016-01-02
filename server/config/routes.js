@@ -80,4 +80,5 @@ module.exports = function(app) {
   app.get('/getAllUsers', users.getAllUsers);
   app.post('/addFriend', users.addFriend);
 
+  app.post('/removeFriend', users.removeFriend);
 };

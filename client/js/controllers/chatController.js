@@ -2,6 +2,7 @@ soulFood.controller('chatController', function($scope, userFactory, $location){
 	
   $scope.user = {};
 
+
   userFactory.checkLogin(function(response){
     console.log('check login', response);
     if(!response.data){
@@ -31,5 +32,7 @@ soulFood.controller('chatController', function($scope, userFactory, $location){
   	input.user = $scope.user.name;
   	console.log('user trying to post', input);
   	socket.emit('message', input);
+    $scope.newMessage = {};
   }
+
 });

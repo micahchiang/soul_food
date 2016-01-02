@@ -60,6 +60,43 @@ module.exports = (function(){
 					res.json(results);
 				}
 			}).limit(1)
-		}
+		},
+
+    removeFriend: function(req, res){
+      console.log(req.body.user_id, 'user id');
+      console.log(req.body.friend_id, 'friend id');
+      console.log(req.body.friend_index, 'index of object friend');
+      
+      // User.findOne({_id: req.body.user_id}, function(err, user){
+      //   user.friends({_id: req.body.friend_id}).remove();
+      //   user.save(function(err){
+      //     res.json(err);
+      //   })
+      // })
+
+      // User.friends._id(req.body.friend_id).remove();
+      // User.save(function (err) {
+      //   if (err) return handleError(err);
+      //   console.log('the sub-doc was removed')
+      // });
+
+      User.findById(req.body.user_id, function(err, post){
+        console.log(post.friends.pull({_id: req.body.friend_id}));
+        if(!err){
+          var docs = post.friends.id(req.body.friend_id).remove();
+          // post.friends[req.body.friend_index].remove();
+          // post.friends.pull({_id: req.body.friend_id});
+;         docs.save(function (err){
+            if(err){
+              console.log(err);
+            }
+          })
+        }
+      })
+
+      // User.update({_id: ObjectId(req.body.user_id)}, 
+      //             {$pull: {friends: {_id: ObjectId(req.body.friend_id)}}}, true);
+     
+    }
   }
 })();
