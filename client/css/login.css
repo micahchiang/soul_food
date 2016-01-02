@@ -35,6 +35,7 @@ h1{
 	position: relative;
 	color: white;
 	font-family: 'Rock Salt', cursive;
+	background-color: rgba(192, 192, 192, .7);
 }
 
 .boxes{

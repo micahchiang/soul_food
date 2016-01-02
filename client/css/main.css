@@ -5,6 +5,11 @@
 	font-family: Arial;
 }
 
+/*#soulfood{
+	border: 1px solid black;
+	width: 200px;
+}*/
+
 #header{
 	width: 100%;
 	background-color: rgba(192, 192, 192, .5);
@@ -42,7 +47,9 @@
 }
 	#slide1 h1{
 		text-align: center;
-		color: white;
+		color: black;
+		background-color: rgba(192, 192, 192, .7);
+/*		border: 1px solid black;*/
 	}
 
 #slide2{
