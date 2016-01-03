@@ -96,12 +96,13 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
     userFactory.logoutUser();
     $location.url('/');
   }
-  
+
   $scope.events =[];
   var id= $scope.userid._id;
   console.log($scope.user._id);
   var getEventListById = function(id)
   {
+    console.log(id);
     profileFactory.getEventsById(id,function(data)
     {
       $scope.events = data;
