@@ -1,12 +1,14 @@
 soulFood.controller('dashboardController', function($scope, $routeParams, $location, userFactory, eventFactory, profileFactory){
   $scope.user = {};
+
   userFactory.checkLogin(function(response){
-    console.log('check login', response);
+    // console.log('check login', response);
     if(!response.data){
       $location.url('login');
     }
     $scope.user = response.data;
   });
+
   userFactory.getUser(function(data){
     console.log(data);
     $scope.userid = data;
@@ -17,11 +19,14 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
       $scope.user = response.data;
     })
   }
+
   getAllUsers();
   function getAllUsers(){
     userFactory.getAllUsers(function(data){
       // console.log(data, 'all user data');
       console.log($scope.user, 'current user data');
+      console.log($scope.user._id, 'current id from oauth');
+      getEventListById($scope.user._id);
       ///remove current user from available friend list
       var currentUser = $scope.user;
       for(var i = 0; i<data.length; i++){
@@ -68,7 +73,7 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
     }
     userFactory.addFriend(friend, user, function(response){
       // alert(friend.name + ' has been added to your friend list');
-      console.log(response);
+      // console.log(response);
       console.log('just added a friend!');
       getAllUsers();
       refreshUser();
@@ -85,7 +90,7 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
         }
       }
     userFactory.removeFriend(friendId, user._id, friend_index, function(response){
-      console.log(response);
+      // console.log(response);
       getAllUsers();
       refreshUser();
     })
@@ -98,18 +103,16 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
   }
   
   $scope.events =[];
-  var id= $scope.userid._id;
-  console.log($scope.user._id);
-  var getEventListById = function(id)
+
+  function getEventListById(currentUserId)
   {
-    profileFactory.getEventsById(id,function(data)
+    profileFactory.getEventsById(currentUserId,function(data)
     {
       $scope.events = data;
-      console.log($scope.events);
+      console.log($scope.events, 'event got back from');
     })
   }
 
-  getEventListById(id);
   $scope.addEvent = function()
 	{
 		$scope.newEvent.user = $scope.userid;
