@@ -12,7 +12,11 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
     $scope.userid = data;
   })
   console.log($scope.userid);
-
+  function refreshUser(){
+    userFactory.checkLogin(function(response){
+      $scope.user = response.data;
+    })
+  }
   getAllUsers();
   function getAllUsers(){
     userFactory.getAllUsers(function(data){
@@ -33,7 +37,7 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
               data.splice(j, 1);
             }
           }
-          
+
         }
         console.log(k);
         console.log(j);
@@ -50,12 +54,12 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
       }
       $scope.persons = data;
     })
-  } 
+  }
 
   $scope.addFriend = function(friend, user){
     console.log(friend, 'in friend trying to add');
     console.log(user, 'current user');
-
+    // alert('addfriend invoked!');
     for(var i = 0; i<user.friends.length; i++){
         if(user.friends[i]._id === friend._id){
           alert('You already friend with ' + friend.name);
@@ -65,18 +69,21 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
 
     if(user.friends.length === 0){
       userFactory.addFriend(friend, user, function(response){
+          refreshUser();
+          getAllUsers();
          alert('Friend has been added');
       })
     } else{
       userFactory.addFriend(friend, user, function(response){
         alert(friend.name + ' has been added to your friend list');
+        refreshUser();
         getAllUsers();
       })
     }
   }
 
   $scope.removeFriend = function(friend, user){
-    var friendId = friend._id; 
+    var friendId = friend._id;
       for(var i = 0; i<user.friends.length; i++){
         if(friendId === user.friends[i]._id){
           var friend_index = i;
@@ -84,10 +91,12 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
       }
     userFactory.removeFriend(friendId, user._id, friend_index, function(response){
       console.log(response);
+      getAllUsers();
+      refreshUser();
     })
-    $location.url('dashboard');
+    // $location.url('dashboard');
   }
-  
+
   $scope.logout = function(){
     userFactory.logoutUser();
     $location.url('/');
