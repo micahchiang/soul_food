@@ -57,8 +57,8 @@
   <h2>Add a new Event</h2>
   <form ng-submit="addEvent()">
       <label>Event Title:</label> <input type= "text" name="title" value="title" ng-model="newEvent.title">
-      <label>Event Date:</label> <input  type="text" name="date" ng-model="newEvent.date" >
-      <label>Event Time:</label> <input  type="text" name="time" ng-model="newEvent.time"  >
+      <label>Event Date:</label> <input  type="date" name="date" ng-model="newEvent.date" >
+      <label>Event Time:</label> <input  type="time" name="time" ng-model="newEvent.time"  >
       <label>Event Location:</label> <input type="location" name="location" value="location" ng-model="newEvent.location">
       <label>Event Description:</label> <textarea ng-model="newEvent.description"></textarea>
       <label>Type of food:</label> <input type="text" name="type_of_food" value="type_of_food" ng-model="newEvent.type_of_food">
