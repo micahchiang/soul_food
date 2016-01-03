@@ -101,7 +101,7 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
     userFactory.logoutUser();
     $location.url('/');
   }
-  
+
   $scope.events =[];
 
   function getEventListById(currentUserId)

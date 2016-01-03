@@ -18,6 +18,7 @@
   </ul>
 </div>
   <div id = 'eventsbox' class="Events">
+    <label><input type="text" ng-model="filter_event" placeholder="search event..."></label>
     <h2>Upcoming Events</h2>
   <table>
     <thead>
@@ -59,9 +60,44 @@
       <label>Event Title:</label> <input type= "text" name="title" value="title" ng-model="newEvent.title">
       <label>Event Date:</label> <input  type="date" name="date" ng-model="newEvent.date" >
       <label>Event Time:</label> <input  type="time" name="time" ng-model="newEvent.time"  >
-      <label>Event Location:</label> <input type="location" name="location" value="location" ng-model="newEvent.location">
+      <label>Event Location:</label>
+        <select ng-model="newEvent.location" name="location">
+          <option value="Burbank">Burbank</option>
+          <option value="LA">LA</option>
+          <option value="Tustin">Tustin</option>
+          <option value="DTLA">DTLA</option>
+          <option value="Glendale">Glendale</option>
+          <option value="Irvine">Irvine</option>
+          <option value="Torrance">Torrance</option>
+          <option value="Pasadena">Pasadena</option>
+          <option value="Rosemead">Rosemead</option>
+          <option value="Hacienda">Hacienda</option>
+          <option value="Walnut">Walnut</option>
+          <option value="Cerritos">Cerritos</option>
+          <option value="Arcadia">Arcadia</option>
+          <option value="Weho">Weho</option>
+          <option value="MISC">MISC</option>
+        </select>
       <label>Event Description:</label> <textarea ng-model="newEvent.description"></textarea>
-      <label>Type of food:</label> <input type="text" name="type_of_food" value="type_of_food" ng-model="newEvent.type_of_food">
+      <label>Type of food:</label>
+        <select ng-model="newEvent.type_of_food" name="type_of_food">
+          <option value="Select">SELECT...</option>
+          <option value="Korean">Korean</option>
+          <option value="Chinese">Chinese</option>
+          <option value="Thai">Thai</option>
+          <option value="Taiwanese">Taiwanese</option>
+          <option value="American">American</option>
+          <option value="BBQ">BBQ</option>
+          <option value="Italian">Italian</option>
+          <option value="Fusion">Fusion</option>
+          <option value="Mexican">Mexican</option>
+          <option value="fastFood">Fast Food</option>
+          <option value="Japanese">Japanese</option>
+          <option value="Sushi">Sushi</option>
+          <option value="Burgers">Burgers</option>
+          <option value="Indian">Indian</option>
+          <option value="MISC">MISC</option>
+        </select>
       <input type="submit" value="Submit">
   </form>
 </div>
