@@ -16,13 +16,36 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
   getAllUsers();
   function getAllUsers(){
     userFactory.getAllUsers(function(data){
-      console.log(data, 'all user data');
+      // console.log(data, 'all user data');
       console.log($scope.user, 'current user data');
       ///remove current user from available friend list
       var currentUser = $scope.user;
       for(var i = 0; i<data.length; i++){
         if(data[i]._id === currentUser._id){
           data.splice(i, 1);
+        }
+      }
+      //this loop will run when current users length bigger than user's friends length
+      if(data.length >= currentUser.friends.length){
+         for(var j =0; j < data.length; j++){
+          for(var k = 0; k < currentUser.friends.length; k++){
+            if(data[j]._id === currentUser.friends[k]._id){
+              data.splice(j, 1);
+            }
+          }
+          
+        }
+        console.log(k);
+        console.log(j);
+      }
+      // this loop will run when user's friends length is longer than users length
+      else {
+         for(var k =0; k < data.length; k++){
+          for(var j = 0; j < currentUser.friends.length; j++){
+            if(data[j]._id === currentUser.friends[j]._id){
+              data.splice(k, 1);
+            }
+          }
         }
       }
       $scope.persons = data;
@@ -50,14 +73,6 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
         getAllUsers();
       })
     }
-      // if(user.friends[i]._id != friend._id){ 
-        // userFactory.addFriend(friend, user, function(response){
-        //   alert(friend.name +' has been added to your friend list');
-      //     // return;
-      //     // break;
-      //   })
-      //   return;
-      // }
   }
 
   $scope.removeFriend = function(friend, user){
@@ -68,8 +83,9 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
         }
       }
     userFactory.removeFriend(friendId, user._id, friend_index, function(response){
-      // console.log(response);
+      console.log(response);
     })
+    $location.url('dashboard');
   }
   
   $scope.logout = function(){
