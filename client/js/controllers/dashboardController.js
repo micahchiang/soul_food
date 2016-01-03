@@ -96,34 +96,7 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
     userFactory.logoutUser();
     $location.url('/');
   }
-  // function dateFormat(dateToFormat)
-	// {
-	// 	var date = new Date(dateToFormat);
-	// 	var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	// 	var month = monthNames[date.getMonth()];
-	// 	var day = date.getDate();
-	// 	var year = date.getFullYear();
-	// 	var newDate = month + ' ' + day + ' ' + year;
-	// 	return newDate;
-	// }
-
-  // myapp.filter('dateFormat', function($filter)
-  // {
-  //  return function(input)
-  //  {
-  //   if(input == null){ return ""; }
-  //
-  //   var _date = $filter('date')(new Date(input), 'MMM dd yyyy');
-  //
-  //   return _date.toUpperCase();
-  //
-  //  };
-  // });
-
-  //jquery methods for datepicker and time picker
-  //$("#event-date").datepicker({minDate:1});
-  //$('#event-time').timepicker({minTime:'6:00AM', maxTime:'11:00PM', disableTextInput: true});
-
+  
   $scope.events =[];
   var id= $scope.userid._id;
   console.log($scope.user._id);
@@ -139,21 +112,13 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
   getEventListById(id);
   $scope.addEvent = function()
 	{
-    console.log($scope.newEvent);
-    console.log('converting date to string', $scope.newEvent.date.toDateString())
-    console.log('what datatype is this?', typeof $scope.newEvent.date.toDateString())
-		// $scope.newEvent.user = $scope.userid;
-    console.log($scope.newEvent.time);
-    console.log('datatype of time before method', typeof $scope.newEvent.time);
-    console.log('datatype of this time?', typeof $scope.newEvent.time.toTimeString());
-    console.log('resulting time', $scope.newEvent.time.toTimeString());
-    // //$scope.newEvent.time= $('#event-time').val();
-    // //$scope.newEvent.date= $('#event-date').val();
-    // console.log($scope.newEvent.user);
-		// $scope.newEvent.events = 0;
-		// eventFactory.addEvent($scope.newEvent, function(){
-		// 	getEventListById(id);
-		// });
-    // $scope.newEvent = {};
+		$scope.newEvent.user = $scope.userid;
+    $scope.newEvent.date = $scope.newEvent.date.toDateString()
+    $scope.newEvent.time = $scope.newEvent.time.toLocaleTimeString();
+		$scope.newEvent.events = 0;
+		eventFactory.addEvent($scope.newEvent, function(){
+			getEventListById(id);
+		});
+    $scope.newEvent = {};
 	}
 });
