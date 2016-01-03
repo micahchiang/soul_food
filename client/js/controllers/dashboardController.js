@@ -140,14 +140,20 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
   $scope.addEvent = function()
 	{
     console.log($scope.newEvent);
-		$scope.newEvent.user = $scope.userid;
-    //$scope.newEvent.time= $('#event-time').val();
-    //$scope.newEvent.date= $('#event-date').val();
-    console.log($scope.newEvent.user);
-		$scope.newEvent.events = 0;
-		eventFactory.addEvent($scope.newEvent, function(){
-			getEventListById(id);
-		});
-    $scope.newEvent = {};
+    console.log('converting date to string', $scope.newEvent.date.toDateString())
+    console.log('what datatype is this?', typeof $scope.newEvent.date.toDateString())
+		// $scope.newEvent.user = $scope.userid;
+    console.log($scope.newEvent.time);
+    console.log('datatype of time before method', typeof $scope.newEvent.time);
+    console.log('datatype of this time?', typeof $scope.newEvent.time.toTimeString());
+    console.log('resulting time', $scope.newEvent.time.toTimeString());
+    // //$scope.newEvent.time= $('#event-time').val();
+    // //$scope.newEvent.date= $('#event-date').val();
+    // console.log($scope.newEvent.user);
+		// $scope.newEvent.events = 0;
+		// eventFactory.addEvent($scope.newEvent, function(){
+		// 	getEventListById(id);
+		// });
+    // $scope.newEvent = {};
 	}
 });
