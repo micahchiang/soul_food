@@ -68,6 +68,7 @@ soulFood.factory('userFactory' , function($http){
       console.log('factory trying to add friend to the user', friend);
       $http.post('/addFriend', friend).then(function(response){
         console.log(response);
+        callback(response);
       })
     },
 

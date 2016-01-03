@@ -57,29 +57,24 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
   }
 
   $scope.addFriend = function(friend, user){
-    console.log(friend, 'in friend trying to add');
-    console.log(user, 'current user');
-    // alert('addfriend invoked!');
+    // console.log(friend, 'in friend trying to add');
+    // console.log(user, 'current user');
+    console.log('HEY IM TRYING TO ADD A FRIEND!!!!');
     for(var i = 0; i<user.friends.length; i++){
         if(user.friends[i]._id === friend._id){
-          alert('You already friend with ' + friend.name);
+          // alert('You already friend with ' + friend.name);
           return;
         }
-      }
-
-    if(user.friends.length === 0){
-      userFactory.addFriend(friend, user, function(response){
-          refreshUser();
-          getAllUsers();
-         alert('Friend has been added');
-      })
-    } else{
-      userFactory.addFriend(friend, user, function(response){
-        alert(friend.name + ' has been added to your friend list');
-        refreshUser();
-        getAllUsers();
-      })
     }
+    userFactory.addFriend(friend, user, function(response){
+      // alert(friend.name + ' has been added to your friend list');
+      console.log(response);
+      console.log('just added a friend!');
+      getAllUsers();
+      refreshUser();
+    });
+    // console.log('YO IM GONNA ADD A FRIEND!!!');
+
   }
 
   $scope.removeFriend = function(friend, user){

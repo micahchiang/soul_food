@@ -45,6 +45,11 @@ module.exports = (function(){
         user.friends.push(req.body);
         user.save(function(err){
           res.json(err);
+          if(err){
+            res.json({err: err});
+          } else {
+            res.json(true);
+          }
         })
       console.log(req.user, 'current user in add Friend model');
       console.log(req.body, 'req in user model');
@@ -67,7 +72,7 @@ module.exports = (function(){
       console.log(req.body.friend_id, 'friend id');
       console.log(req.body.friend_index, 'index of object friend');
 
-      User.findByIdAndUpdate(req.body.user_id, 
+      User.findByIdAndUpdate(req.body.user_id,
         {$pull: {'friends': {_id: req.body.friend_id}}}, function(err, model){
           if(err){
             console.log(err);
