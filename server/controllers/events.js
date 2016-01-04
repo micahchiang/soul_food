@@ -39,9 +39,10 @@ module.exports = (function(){
               console.log(events);
   				    res.json(events);
 
-        })
+        	})
 	    },
-			destroyEvent: function(req, res)
+
+		destroyEvent: function(req, res)
 		{
 			Event.remove({_id: req.params.id}, function(err, results)
 			{
@@ -54,10 +55,8 @@ module.exports = (function(){
 					res.json({status: 'success'});
 				}
 			})
-		}
-
-        	})
-	    },
+		},
+		
 	    attendEvent: function(req, res){
 	    	console.log(req.body, ' user in server');
 	    	Event.findOne({_id:req.params.id}, function(err, result){
