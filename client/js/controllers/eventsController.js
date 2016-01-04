@@ -1,16 +1,25 @@
 soulFood.controller('eventsController', function($scope,$location, $routeParams,eventFactory, userFactory, commentFactory) {
   $scope.user = {};
+  $scope.events = [];
+
   userFactory.getUser(function(data){
     console.log(data);
     $scope.user = data;
   })
-  $scope.events = [];
+
+  // userFactory.checkLogin(function(response){
+  //   console.log(response);
+  //   $scope.user = response.data;
+  // });
+
+  
     var id = $routeParams.id;
 
     var getEvent = function(id){
   		eventFactory.getEventById(id, function(data){
   			$scope.events= data;
-        console.log($scope.events);
+        console.log($scope.events, 'in event controller');
+        console.log($scope.user, 'current user in event controller');
   		});
     }
     getEvent(id);
