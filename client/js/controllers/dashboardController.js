@@ -104,6 +104,7 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
   }
 
   $scope.events =[];
+
   var id= $scope.userid._id;
     var getEventListById = function(id)
    {
@@ -113,7 +114,17 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
         console.log($scope.events);
       })
     }
-  getEventListById(id);
+
+  function getEventListById(currentUserId)
+  {
+    console.log(currentUserId, 'current users id')
+    profileFactory.getEventsById(currentUserId,function(data)
+    {
+      $scope.events = data;
+      // console.log($scope.events, 'event got back from');
+    })
+  }
+
   $scope.addEvent = function()
 	{
     $scope.newEvent.user = $scope.userid;
