@@ -39,6 +39,20 @@ module.exports = (function(){
               console.log(events);
   				    res.json(events);
         })
-	    }
+	    },
+			destroyEvent: function(req, res)
+		{
+			Event.remove({_id: req.params.id}, function(err, results)
+			{
+				if(err)
+				{
+					res.json({status: 'failed', err: err});
+				}
+				else
+				{
+					res.json({status: 'success'});
+				}
+			})
+		}
   }
 })();

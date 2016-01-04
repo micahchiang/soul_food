@@ -15,5 +15,9 @@ soulFood.factory('eventFactory', function($http)
   	{
   		$http.get('/getEventById/' + id).success(function(output){ callback(output); });
   	}
+	factory.destroyEvent = function (id,callback)
+	{
+		$http.delete('/destroyEvent/'+id).success(function(output){callback(output);});
+	}
 	return factory;
 });

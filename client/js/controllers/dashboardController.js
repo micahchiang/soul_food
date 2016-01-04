@@ -6,7 +6,9 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
       $location.url('login');
     }
     $scope.user = response.data;
+    console.log($scope.user);
   });
+  console.log($scope.user._id);
   userFactory.getUser(function(data){
     console.log(data);
     $scope.userid = data;
@@ -99,7 +101,7 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
 
   $scope.events =[];
   var id= $scope.userid._id;
-  console.log($scope.user._id);
+  //console.log($scope.user.data._id);
   var getEventListById = function(id)
   {
     console.log(id);
@@ -122,4 +124,13 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
 		});
     $scope.newEvent = {};
 	}
+  $scope.destroyEvent = function(event_id) {
+    console.log(event_id);
+    eventFactory.destroyEvent(event_id, function(result){
+      if(result.status == 'result') {
+        console.log('error');
+      }
+      getEventListById(id);
+    })
+  }
 });

@@ -30,6 +30,7 @@
         <th>description</th>
         <th>Type of food</th>
         <th>Created by</th>
+        <th>Remove Event</th>
       </tr>
     </thead>
     <tbody>
@@ -41,6 +42,7 @@
         <td ng-bind="event.description"></td>
         <td ng-bind="event.type_of_food"></td>
         <td> <a ng-href="#/user/{{event.user._id}}"><span ng-bind='event.user.name'> </td>
+        <td><button ng-show="event.user._id == user._id" ng-click="destroyEvent(event._id)">Cancel</button></td>
       </tr>
     </tbody>
   </table>

@@ -18,6 +18,10 @@ module.exports = function(app) {
   app.get('/getEventsById/:id', function(req, res){
     events.getEventsById(req, res);
   })
+  //delete
+	app.delete('/destroyEvent/:id', function(req, res){
+		events.destroyEvent(req, res);
+	})
   //comments.html routes
   app.get('/getCommentsById/:id', function(req, res){
     comments.getCommentsById(req, res);
