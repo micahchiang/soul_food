@@ -106,10 +106,11 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
 
   function getEventListById(currentUserId)
   {
+    console.log(currentUserId, 'current users id')
     profileFactory.getEventsById(currentUserId,function(data)
     {
       $scope.events = data;
-      console.log($scope.events, 'event got back from');
+      // console.log($scope.events, 'event got back from');
     })
   }
 

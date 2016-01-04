@@ -81,4 +81,6 @@ module.exports = function(app) {
   app.post('/addFriend', users.addFriend);
 
   app.post('/removeFriend', users.removeFriend);
+
+  app.post('/attendEvent/:id', events.attendEvent)
 };

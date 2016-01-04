@@ -1,17 +1,18 @@
 soulFood.controller('showAllEventsController', function($scope, $location, userFactory, eventFactory){
   $scope.user = {};
 
-  // userFactory.getUser(function(data){
-  //   console.log(data);
-  //   $scope.user = data;
-  // })
+  userFactory.getUser(function(data){
+    console.log(data);
+    $scope.user = data;
+  })
 
   userFactory.checkLogin(function(response){
     console.log('check login', response);
     if(!response.data){
-      // alert('Please log in for full access');
+      $location.url('login');
     }
     $scope.user = response.data;
+    getEventList($scope.user._id);
   });
 
   userFactory.getAllUsers(function(data){
@@ -22,19 +23,45 @@ soulFood.controller('showAllEventsController', function($scope, $location, userF
     userFactory.logoutUser();
     $location.url('/');
   }
+  
   $scope.events =[];
-  var getEventList = function() {
+  function getEventList(id) {
+    console.log(id, 'current user id');
 		eventFactory.getEvents(function(data) {
+      console.log(data, 'data coming back');
+      // for(var i = 0; i< data.length; i++){
+      //   for(var k = 0; k < data[i].attenders.length; k++){
+      //     // console.log(data[i].attenders[k]._id)
+      //     if(id === data[i].attenders[k]._id){
+      //       console.log('found event alrady attended');
+      //     }
+      //   }
+      // }
 			$scope.events = data;
+
       console.log($scope.events);
 		})
 	}
-  getEventList();
 
   $scope.attendEvent = function(event){
     var currentUser = $scope.user;
+    if(currentUser._id === event.user._id){
+      alert('You cannot attend your own event');
+      return;
+    }
+
+    eventFactory.getEvents(function(data) {
+      for(var i = 0; i< data.length; i++){
+        for(var k = 0; k < data[i].attenders.length; k++){
+          if(currentUser._id === data[i].attenders[k]._id){
+            alert('You already attending this event');
+            return;
+          }
+        }
+      }
+    })
+    eventFactory.attendEvent(event, currentUser);
     console.log(event, 'current event');
     console.log(currentUser, 'current user');
   }
-
 });

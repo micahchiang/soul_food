@@ -23,7 +23,7 @@ module.exports = (function(){
   			})
 		},
 		getEvents: function(req, res){
-			Event.find({}).populate('comments').populate('comments.user').populate('user').exec(function(err, events){
+			Event.find({}).populate('comments').populate('comments.user').populate('user').populate('attenders').exec(function(err, events){
 				    res.json(events);
       })
 		},
@@ -35,10 +35,27 @@ module.exports = (function(){
 			})
 		},
   		getEventById: function(req, res)	{
-        Event.find({_id:req.params.id}).populate('comments').populate('comments.user').populate('user').exec(function(err, events){
+        	Event.find({_id:req.params.id}).populate('comments').populate('comments.user').populate('user').exec(function(err, events){
               console.log(events);
   				    res.json(events);
-        })
+        	})
+	    },
+	    attendEvent: function(req, res){
+	    	console.log(req.body, ' user in server');
+	    	Event.findOne({_id:req.params.id}, function(err, result){
+	    		result.attenders.push(req.body);
+	    		result.save(function(err){
+		          res.json(err);
+		          if(err){
+		            res.json({err: err});
+		          } else {
+		            res.json(true);
+		          }
+		        })
+	    		// console.log(result, 'event got back from server');
+	    	})
+	    	// console.log(req.params.id, 'current event id');
+	    	// console.log(req.body, 'in event controller server');
 	    }
   }
 })();

@@ -7,6 +7,7 @@ var Comments = mongoose.Schema({
 	created_at: { type: Date, default: Date.now },
 	updated_at: { type: Date, default: Date.now }
 });
+
 var EventsSchema = new mongoose.Schema({
   title: {type: String, trim:true},
 	date: { type: String, trim: true},
@@ -17,7 +18,8 @@ var EventsSchema = new mongoose.Schema({
   comments: [Comments],
   type_of_food: { type:String, trim: true},
 	created_at: { type: Date, default: Date.now },
-	updated_at: { type: Date, default: Date.now }
+	updated_at: { type: Date, default: Date.now },
+	attenders: []
 });
 
 mongoose.model('Event', EventsSchema);
