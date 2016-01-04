@@ -29,16 +29,7 @@ soulFood.controller('showAllEventsController', function($scope, $location, userF
     console.log(id, 'current user id');
 		eventFactory.getEvents(function(data) {
       console.log(data, 'data coming back');
-      // for(var i = 0; i< data.length; i++){
-      //   for(var k = 0; k < data[i].attenders.length; k++){
-      //     // console.log(data[i].attenders[k]._id)
-      //     if(id === data[i].attenders[k]._id){
-      //       console.log('found event alrady attended');
-      //     }
-      //   }
-      // }
 			$scope.events = data;
-
       console.log($scope.events);
 		})
 	}
@@ -54,7 +45,7 @@ soulFood.controller('showAllEventsController', function($scope, $location, userF
       for(var i = 0; i< data.length; i++){
         for(var k = 0; k < data[i].attenders.length; k++){
           if(currentUser._id === data[i].attenders[k]._id){
-            alert('You already attending this event');
+            alert('You are attending this event');
             return;
           }
         }

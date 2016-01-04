@@ -146,4 +146,7 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
       getEventListById(id);
     })
   }
+  $scope.nevigateToEvent = function(){
+    $location.url('events');
+  }
 });

@@ -1,7 +1,7 @@
 <div id = 'wrapper' ng-controller='dashboardController'>
   <header>
     <h2>Welcome, <span ng-bind='user.name'></span>
-    <button id = 'btn1' class = 'btn' ng-href = '#/events'>events</button>
+    <button id = 'btn1' class = 'btn' ng-click = 'nevigateToEvent()'>events</button>
     <button id = 'btn2' class = 'btn' ng-click='logout()'>logout</button>
   </header>
 <div id = 'bodywrapper'>
