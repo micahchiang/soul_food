@@ -108,3 +108,9 @@ label{
 	width: 250px;
 	color: white;
 }
+table {
+	text-align: center;
+}
+td {
+	border-bottom: 1px solid black;
+}
