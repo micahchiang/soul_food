@@ -1,0 +1,12 @@
+<div ng-controller='addRestaurantController'>
+  <h1>add restaurant</h1>
+  <form ng-submit='searchRestaurants(search)'>
+    <label>Find: <input type="text" placeholder="tacos, cheap dinner, Max's" ng-model='search.find'></label>
+    <label>Near: <input type="text" placeholder='address, neighborhood, city, state or zip' ng-model='search.location'></label>
+    <input type="submit" value='search'>
+  </form>
+
+    <ul ng-repeat='searchResult in searchResults'>
+      <li>{{ searchResult.name }}</li>
+    </ul>
+</div>

@@ -56,7 +56,7 @@ module.exports = (function(){
 				}
 			})
 		},
-		
+
 	    attendEvent: function(req, res){
 	    	console.log(req.body, ' user in server');
 	    	Event.findOne({_id:req.params.id}, function(err, result){

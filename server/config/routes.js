@@ -1,38 +1,34 @@
 var users = require('../controllers/users');
 var events = require('./../controllers/events.js');
 var comments = require('./../controllers/comments.js');
+var restaurants = require('./../controllers/restaurants.js')
 var passport = require('passport');
 module.exports = function(app) {
   app.post('/users', users.createUser);
   //dashboard.html routes
-  app.post('/addEvent', function(req, res){
-    events.addEvent(req, res);
-  })
-  app.get('/getEvents', function(req, res){
-    events.getEvents(req, res);
-  })
+  app.post('/addEvent', events.addEvent);
+  app.get('/getEvents', events.getEvents);
   //event.html routes
-  app.get('/getEventById/:id', function(req, res){
-    events.getEventById(req, res);
-  })
-  app.get('/getEventsById/:id', function(req, res){
-    events.getEventsById(req, res);
-  })
+  app.get('/getEventById/:id', events.getEventById);
+  app.get('/getEventsById/:id', events.getEventsById);
   //delete
-	app.delete('/destroyEvent/:id', function(req, res){
-		events.destroyEvent(req, res);
-	})
+	app.delete('/destroyEvent/:id', events.destroyEvent);
   //comments.html routes
-  app.get('/getCommentsById/:id', function(req, res){
-    comments.getCommentsById(req, res);
-  })
-  app.post('/addComment/:id', function(req, res){
-    comments.addComment(req, res);
-  })
+  app.get('/getCommentsById/:id', comments.getCommentsById);
+  app.post('/addComment/:id', comments.addComment);
   //user.html routes
-  app.get('/showUser/:id', function(req, res){
-    users.showUser(req, res);
-  })
+  app.get('/showUser/:id', users.showUser);
+
+  app.get('/getAllUsers', users.getAllUsers);
+  app.post('/addFriend', users.addFriend);
+
+  app.post('/removeFriend', users.removeFriend);
+
+  app.post('/attendEvent/:id', events.attendEvent);
+  app.post('/addRestaurant', restaurants.addRestaurant);
+  app.post('/searchRestaurants', restaurants.searchRestaurants);
+
+
   //OAUTH routes
   app.get("/auth/facebook", passport.authenticate("facebook",
                                   {scope: ['email']
@@ -81,10 +77,4 @@ module.exports = function(app) {
     return res.json(req.isAuthenticated() ? req.user : null);
   });
 
-  app.get('/getAllUsers', users.getAllUsers);
-  app.post('/addFriend', users.addFriend);
-
-  app.post('/removeFriend', users.removeFriend);
-
-  app.post('/attendEvent/:id', events.attendEvent)
 };

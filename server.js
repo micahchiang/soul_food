@@ -3,7 +3,8 @@ var express = require("express"),
 //middleware
     path = require("path"),
     mongoose = require('mongoose'),
-    app = express();
+    app = express(),
+    yelp = require('node-yelp');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
@@ -23,7 +24,7 @@ app.use(passport.session());
 require('./server/config/mongoose.js');
 
 require('./server/config/passport.js');
-
+require('./server/config/yelp.js');
 // authentication
 require("./server/auth/fb_auth.js");
 require("./server/auth/google_auth.js")
@@ -54,7 +55,7 @@ io.sockets.on('connection', function (socket) {
     io.emit('serverMsg', {message: message});
     history.push(message);
   });
-  
+
   socket.on('history', function(input){
     currentUsers = input.name;
     var message = input.name + " has entered the chat";
@@ -73,4 +74,3 @@ io.sockets.on('connection', function (socket) {
   //   delete currentUsers[socket.id];
   // });
 });
-

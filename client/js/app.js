@@ -25,6 +25,9 @@ var soulFood = angular.module('soulFood', ['ngRoute', 'routeStyles'])
     .when('/events', {
       templateUrl: '/partials/events.html', controller: 'showAllEventsController', css: 'css/events.css'
     })
+    .when('/addrestaurants', {
+      templateUrl: '/partials/add_restaurants.html'
+    })
     .otherwise({
       redirectTo:'/'
     });
