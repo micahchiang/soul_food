@@ -1,20 +1,12 @@
 var mongoose = require('mongoose');
-var yelp = require('node-yelp');
-var client = yelp.createClient({
-  oauth: {
-    "consumer_key": "1pDdwYrTx--Gp0lHnVVuSw",
-    "consumer_secret": "qbIU6lyygVC_adOrtbSUHU6W9I8",
-    "token": "cKlvZGvUjcsnCQYjT_KEz-3bWVbJWm-p",
-    "token_secret": "JeoIWIF2Okwwuxjv5YDvhfjQ9j4"
-  },
-
-  //optional settings:
-  // httpClient:{
-  //   maxSockets: 10 //default is 10
-  // }
-})
+var Yelp = require('yelp');
+var yelp = new Yelp({
+  consumer_key: "1pDdwYrTx--Gp0lHnVVuSw",
+  consumer_secret: "qbIU6lyygVC_adOrtbSUHU6W9I8",
+  token: "cKlvZGvUjcsnCQYjT_KEz-3bWVbJWm-p",
+  token_secret: "JeoIWIF2Okwwuxjv5YDvhfjQ9j4"
+});
 var Restaurant = mongoose.model('Restaurant');
-
 module.exports = (function(){
   return{
     addRestaurant: function(req, res){
@@ -35,17 +27,13 @@ module.exports = (function(){
     },
     searchRestaurants: function(req,res){
       console.log('searching with this', req.body);
-      client.search({
-        terms: req.body.find,
-        location: req.body.location
-      }).then(function (data) {
-        var businesses = data.businesses;
-        var location = data.region;
-        console.log(data);
+      //https://www.yelp.com/developers/documentation/v2/search_api
+      yelp.search({ term: req.body.find, location: req.body.location })
+      .then(function (data) {
         res.json(data);
-        // ...
+      })
+      .catch(function (err) {
       });
-
     }
   }
 })();

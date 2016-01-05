@@ -3,8 +3,7 @@ var express = require("express"),
 //middleware
     path = require("path"),
     mongoose = require('mongoose'),
-    app = express(),
-    yelp = require('node-yelp');
+    app = express();
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
