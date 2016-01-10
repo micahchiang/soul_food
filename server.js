@@ -23,7 +23,7 @@ app.use(passport.session());
 require('./server/config/mongoose.js');
 
 require('./server/config/passport.js');
-require('./server/config/yelp.js');
+// require('./server/config/yelp.js');
 // authentication
 require("./server/auth/fb_auth.js");
 require("./server/auth/google_auth.js")
@@ -33,8 +33,6 @@ require('./server/config/routes.js')(app);
 
 // set up a static file server that points to the "client" directory
 app.use(express.static(path.join(__dirname, './client')));
-
-
 
 var server = app.listen(8000, function() {
   console.log('soul food on: 8000');
