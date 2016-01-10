@@ -5,8 +5,42 @@
     <label>Near: <input type="text" placeholder='address, neighborhood, city, state or zip' ng-model='search.location'></label>
     <input type="submit" value='search'>
   </form>
+    <table>
+      <thead>
+        <tr>
+          <td>
+            #
+          </td>
+          <td>
 
-    <ul ng-repeat='searchResult in searchResults'>
-      <li>{{ searchResult.name }}</li>
-    </ul>
+          </td>
+          <td>
+            Name
+          </td>
+          <td>
+            Rating
+          </td>
+          <td>
+            Action
+          </td>
+        </tr>
+      </thead>
+      <tr ng-repeat='searchResult in searchResults'>
+        <td>
+          [{{$index + 1}}]
+        </td>
+        <td>
+          <img src="{{searchResult.image_url}}" alt="" />
+        </td>
+        <td>
+          <span ng-bind='searchResult.name'></span>
+        </td>
+        <td>
+          <img src="{{searchResult.rating_img_url}}" alt="" />
+        </td>
+        <td>
+          <button ng-click='addRestaurant(searchResult)'>Add to Restaurant List</button>
+        </td>
+      </tr>
+    </table>
 </div>

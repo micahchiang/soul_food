@@ -1,0 +1,18 @@
+<div ng-controller='restaurantController'>
+  <h1><a href="{{restaurant.url}}"><span ng-bind='restaurant.name'></span></a></h1>
+  <h3><span ng-bind='restaurant.display_phone'></span></h3>
+  <h4>Rating: <span ng-bind='restaurant.rating'></span> <img src="{{restaurant.rating_img_url}}" alt="" /></h4>
+  <img src="{{restaurant.image_url}}" alt="" />
+  <h4>Location: </h4>
+  <iframe
+    width="600"
+    height="450"
+    frameborder="0" style="border:0"
+    ng-src="{{trustedURL}}" allowfullscreen>
+  </iframe>
+  <div ng-repeat="address in restaurant.location.display_address">
+    <p>
+      <span ng-bind="address"></span>
+    </p>
+  </div>
+</div>

@@ -19,6 +19,9 @@ var soulFood = angular.module('soulFood', ['ngRoute', 'routeStyles'])
     .when('/user/:id', {
 		  templateUrl: '/partials/profile.html', css: 'css/profile.css'
 	   })
+     .when('/restaurant/:id', {
+ 		  templateUrl: '/partials/restaurant.html'
+ 	   })
     .when('/event/:id', {
   		templateUrl: 'partials/event.html', css: 'css/event.css'
   	})
@@ -27,6 +30,9 @@ var soulFood = angular.module('soulFood', ['ngRoute', 'routeStyles'])
     })
     .when('/addrestaurants', {
       templateUrl: '/partials/add_restaurants.html'
+    })
+    .when('/restaurants', {
+      templateUrl: '/partials/restaurants.html'
     })
     .otherwise({
       redirectTo:'/'

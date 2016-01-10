@@ -18,25 +18,20 @@ module.exports = function(app) {
   app.post('/addComment/:id', comments.addComment);
   //user.html routes
   app.get('/showUser/:id', users.showUser);
-
   app.get('/getAllUsers', users.getAllUsers);
   app.post('/addFriend', users.addFriend);
-
   app.post('/removeFriend', users.removeFriend);
-
   app.post('/attendEvent/:id', events.attendEvent);
+  //restaurant routes
   app.post('/addRestaurant', restaurants.addRestaurant);
   app.post('/searchRestaurants', restaurants.searchRestaurants);
-
-
+  app.get('/getRestaurant/:id', restaurants.getRestaurant);
+  app.get('/getAllRestaurants', restaurants.getAllRestaurants);
   //OAUTH routes
-  app.get("/auth/facebook", passport.authenticate("facebook",
-                                  {scope: ['email']
-  }));
+  app.get("/auth/facebook", passport.authenticate("facebook",{scope: ['email']}));
   app.get("/auth/facebook/callback",
     passport.authenticate("facebook",
       { failureRedirect: "/", successRedirect:"/" }));
-
   app.get("/auth/google",
         passport.authenticate("google",
           { scope: ["https://www.googleapis.com/auth/plus.login",
@@ -76,5 +71,4 @@ module.exports = function(app) {
     console.log('loggedin?', req.isAuthenticated());
     return res.json(req.isAuthenticated() ? req.user : null);
   });
-
 };
