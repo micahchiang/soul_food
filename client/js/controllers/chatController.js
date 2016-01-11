@@ -1,7 +1,6 @@
 soulFood.controller('chatController', function($scope, userFactory, $location){
-	
-  $scope.user = {};
 
+  $scope.user = {};
 
   userFactory.checkLogin(function(response){
     console.log('check login', response);
@@ -19,8 +18,8 @@ soulFood.controller('chatController', function($scope, userFactory, $location){
     console.log(data, 'in chat controller');
     $scope.user = data;
   })
-  
-  
+
+
   // $scope.getHistory = function(){
   //   console.log('in get history controller');
   //   userFactory.getUser(function(data){

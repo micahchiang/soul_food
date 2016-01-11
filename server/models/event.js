@@ -16,6 +16,7 @@ var EventsSchema = new mongoose.Schema({
 	description: { type: String, trim: true},
 	user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
   comments: [Comments],
+	restaurant: {type: mongoose.Schema.Types.ObjectId, ref: "Restaurant"},
   type_of_food: { type:String, trim: true},
 	created_at: { type: Date, default: Date.now },
 	updated_at: { type: Date, default: Date.now },

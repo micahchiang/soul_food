@@ -1,5 +1,4 @@
-soulFood.controller('restaurantController', function($scope, $sce, $routeParams, restaurantFactory)
-{
+soulFood.controller('restaurantController', function($scope, $sce, $routeParams, restaurantFactory){
   restaurantFactory.getRestaurant($routeParams.id, function(response){
     console.log(response);
     $scope.restaurant = response.data;

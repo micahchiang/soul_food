@@ -4,6 +4,4 @@ soulFood.controller('mainController', function($scope, $location, $anchorScroll)
 		$anchorScroll();
 		$location.hash(old);
 	}
-
-
 });

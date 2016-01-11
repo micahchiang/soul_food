@@ -12,25 +12,25 @@ soulFood.controller('eventsController', function($scope,$location, $routeParams,
   //   $scope.user = response.data;
   // });
 
-  
-    var id = $routeParams.id;
 
-    var getEvent = function(id){
-  		eventFactory.getEventById(id, function(data){
-  			$scope.events= data;
-        console.log($scope.events, 'in event controller');
-        console.log($scope.user, 'current user in event controller');
-  		});
-    }
-    getEvent(id);
-    var getCommentListById = function(id){
-      console.log(id);
-    		commentFactory.getCommentsById(id,function(response){
-          console.log('do i get here');
-    			$scope.comments = response.data.comments;
-          console.log($scope.comments);
-        })
-    }
+  var id = $routeParams.id;
+
+  var getEvent = function(id){
+		eventFactory.getEventById(id, function(data){
+			$scope.events= data;
+      console.log($scope.events, 'in event controller');
+      console.log($scope.user, 'current user in event controller');
+		});
+  }
+  getEvent(id);
+  var getCommentListById = function(id){
+    console.log(id);
+  		commentFactory.getCommentsById(id,function(response){
+        console.log('do i get here');
+  			$scope.comments = response.data.comments;
+        console.log($scope.comments);
+      })
+  }
   getCommentListById(id);
 
   $scope.addComment= function(comment, event_id){

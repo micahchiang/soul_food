@@ -1,10 +1,11 @@
 var mongoose = require('mongoose');
 var Event = mongoose.model('Event');
 var User = mongoose.model('User');
-
+var Restaurant = mongoose.model('Restaurant');
 module.exports = (function(){
 	return {
 		addEvent: function(req, res){
+			console.log('adding event', req.body);
 			var events = new Event(req.body);
   			events.save(function(err, record){
   				if(err){
@@ -23,24 +24,24 @@ module.exports = (function(){
   			})
 		},
 		getEvents: function(req, res){
-			Event.find({}).populate('comments').populate('comments.user').populate('user').populate('attenders').exec(function(err, events){
+			Event.find({}).populate('comments').populate('comments.user').populate('user').populate('attenders').populate('restaurant').exec(function(err, events){
 				    res.json(events);
       })
 		},
 		getEventsById: function(req, res){
 			console.log(req.params.id);
-      Event.find({user:req.params.id}).populate('comments').populate('comments.user').populate('user').exec(function(err, events){
+      Event.find({user:req.params.id}).populate('comments').populate('comments.user').populate('user').populate('restaurant').exec(function(err, events){
 				console.log('here i am',events);
 				    res.json(events);
 			})
 		},
-  		getEventById: function(req, res)	{
-        	Event.find({_id:req.params.id}).populate('comments').populate('comments.user').populate('user').exec(function(err, events){
-              console.log(events);
-  				    res.json(events);
+		getEventById: function(req, res)	{
+      	Event.find({_id:req.params.id}).populate('comments').populate('comments.user').populate('user').populate('restaurant').exec(function(err, events){
+            console.log(events);
+				    res.json(events);
 
-        	})
-	    },
+      	})
+    },
 
 		destroyEvent: function(req, res)
 		{
@@ -57,19 +58,19 @@ module.exports = (function(){
 			})
 		},
 
-	    attendEvent: function(req, res){
-	    	console.log(req.body, ' user in server');
-	    	Event.findOne({_id:req.params.id}, function(err, result){
-	    		result.attenders.push(req.body);
-	    		result.save(function(err){
-		          res.json(err);
-		          if(err){
-		            res.json({err: err});
-		          } else {
-		            res.json(true);
-		          }
-		        })
-	    	})
-	    }
+    attendEvent: function(req, res){
+    	console.log(req.body, ' user in server');
+    	Event.findOne({_id:req.params.id}, function(err, result){
+    		result.attenders.push(req.body);
+    		result.save(function(err){
+	          res.json(err);
+	          if(err){
+	            res.json({err: err});
+	          } else {
+	            res.json(true);
+	          }
+	        })
+    	})
+    }
   }
 })();

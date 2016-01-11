@@ -26,6 +26,7 @@
         <th>Date</th>
         <th>Time</th>
         <th>Title</th>
+        <th>Restaurant</th>
         <th>Location</th>
         <th>Description</th>
         <th>Type of food</th>
@@ -38,6 +39,7 @@
         <td ng-bind="event.date"></td>
         <td ng-bind="event.time"></td>
         <td> <a href="#/event/{{event._id}}"><span ng-bind='event.title'></span></a> </td>
+        <td> <a href="#/restaurant/{{event.restaurant._id}}"><span ng-bind='event.restaurant.name'></span></a> </td>
         <td ng-bind="event.location"></td>
         <td ng-bind="event.description"></td>
         <td ng-bind="event.type_of_food"></td>
@@ -59,11 +61,15 @@
 <div id = 'neweventbox'>
   <h2>Add a new Event</h2>
   <form ng-submit="addEvent()">
-      <label>Event Title:</label> <input type= "text" name="title" value="title" ng-model="newEvent.title">
-      <label>Event Date:</label> <input  type="date" name="date" ng-model="newEvent.date" >
-      <label>Event Time:</label> <input  type="time" name="time" ng-model="newEvent.time"  >
+      <label>Event Title:</label> <input type= "text" name="title" value="title" ng-model="newEvent.title" required>
+      <label>Event Date:</label> <input  type="date" name="date" ng-model="newEvent.date" required>
+      <label>Event Time:</label> <input  type="time" name="time" ng-model="newEvent.time"  required>
+      <label>Restaurant:</label>
+        <select ng-model="newEvent.restaurant" required>
+          <option ng-repeat="restaurant in restaurants" value="{{restaurant._id}}">{{restaurant.name}}</option>
+        </select>
       <label>Event Location:</label>
-        <select ng-model="newEvent.location" name="location">
+        <select ng-model="newEvent.location" name="location" required>
           <option value="Burbank">Burbank</option>
           <option value="LA">LA</option>
           <option value="Tustin">Tustin</option>
@@ -80,9 +86,9 @@
           <option value="Weho">Weho</option>
           <option value="MISC">MISC</option>
         </select>
-      <label>Event Description:</label> <textarea ng-model="newEvent.description"></textarea>
+      <label>Event Description:</label> <textarea ng-model="newEvent.description" required></textarea>
       <label>Type of food:</label>
-        <select ng-model="newEvent.type_of_food" name="type_of_food">
+        <select ng-model="newEvent.type_of_food" name="type_of_food" required>
           <option value="Select">SELECT...</option>
           <option value="Korean">Korean</option>
           <option value="Chinese">Chinese</option>

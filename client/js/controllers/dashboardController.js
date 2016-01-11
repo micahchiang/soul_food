@@ -1,4 +1,4 @@
-soulFood.controller('dashboardController', function($scope, $routeParams, $location, userFactory, eventFactory, profileFactory){
+soulFood.controller('dashboardController', function($scope, $routeParams, $location, userFactory, eventFactory, profileFactory, restaurantFactory){
   $scope.user = {};
 
   userFactory.checkLogin(function(response){
@@ -20,6 +20,11 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
       $scope.user = response.data;
     })
   }
+
+  restaurantFactory.getAllRestaurants(function(response){
+    console.log(response);
+    $scope.restaurants = response.data;
+  })
 
   getAllUsers();
   function getAllUsers(){

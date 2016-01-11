@@ -21,10 +21,10 @@ soulFood.factory('eventFactory', function($http)
 		$http.delete('/destroyEvent/'+id).success(function(output){callback(output);});
 	}
 
-  	factory.attendEvent = function (event, currentUser)
-  	{
-  		$http.post('/attendEvent/'+ event._id, currentUser).success(function(){ });
-  		// console.log(event, currentUser, 'in event factory');
-  	}
+	factory.attendEvent = function (event, currentUser)
+	{
+		$http.post('/attendEvent/'+ event._id, currentUser).success(function(){ });
+		// console.log(event, currentUser, 'in event factory');
+	}
 	return factory;
 });
