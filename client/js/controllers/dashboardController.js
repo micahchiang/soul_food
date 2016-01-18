@@ -15,16 +15,13 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
     $scope.userid = data;
   })
   console.log($scope.userid);
+  refreshUser();
   function refreshUser(){
     userFactory.checkLogin(function(response){
       $scope.user = response.data;
+      console.log(response.data, 'in user dashboard!!!!!!!')
     })
   }
-
-  restaurantFactory.getAllRestaurants(function(response){
-    console.log(response);
-    $scope.restaurants = response.data;
-  })
 
   getAllUsers();
   function getAllUsers(){

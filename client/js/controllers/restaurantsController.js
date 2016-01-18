@@ -15,7 +15,9 @@ soulFood.controller('restaurantsController', function($scope, $location, userFac
   refreshUser();
   function refreshUser(){
     userFactory.checkLogin(function(response){
+      console.log(response, 'in refresh user restaurants controller')
     $scope.currentUser = response.data;
+    $scope.restaurants = response.data.favorite_restaurants;
     })
   }
 
