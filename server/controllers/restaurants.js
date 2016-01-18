@@ -7,81 +7,68 @@ var yelp = new Yelp({
   token_secret: "JeoIWIF2Okwwuxjv5YDvhfjQ9j4"
 });
 var Restaurant = mongoose.model('Restaurant');
+var User = mongoose.model('User');
 module.exports = (function(){
   return{
     addRestaurant: function(req, res){
-      console.log('req.body', req.body);
-      //check if it already exists in the db update the data-
-      Restaurant.findOne({id: req.body.id}, function(err, foundRestaurant){
-        // console.log('found the same restaurant trying to update');
-        if(err){
-          console.log('error finding restaurant', err);
-          res.json(err);
-        }
-        if(foundRestaurant == null){
-          console.log('restaurant isnt in db yet! make a new one')
-          // res.json(true);
-          var newRestaurant = new Restaurant({
-            categories: req.body.categories,
-            display_phone: req.body.display_phone,
-            image_url: req.body.image_url,
-            location: req.body.location,
-            name: req.body.name,
-            rating: req.body.rating,
-            rating_img_url: req.body.rating_img_url,
-            url: req.body.url,
-            id: req.body.id
-          });
-          newRestaurant.save(function(err){
-            if(err){
-              return res.json({err: err});
-            } else {
-              return res.json(true);
-            }
-          })
-        } else {
-          // foundRestaurant = req.body;
-          console.log('this is the found restaurant', foundRestaurant);
-          foundRestaurant.categories = req.body.categories;
-          foundRestaurant.display_phone = req.body.display_phone;
-          foundRestaurant.image_url = req.body.image_url;
-          foundRestaurant.location = req.body.location;
-          foundRestaurant.name = req.body.name;
-          foundRestaurant.rating = req.body.rating;
-          foundRestaurant.rating_img_url = req.body.rating_img_url;
-          foundRestaurant.url = req.body.url
-          foundRestaurant.id = req.body.id;
-          foundRestaurant.save(function(err){
-            if(err){
-              return res.json({err: err});
-            } else {
-              console.log('success updating');
-              return res.json(true);
-            }
-          })
-        }
+      User.findOne({_id: req.body.currentUser._id}, function(err, user){
+        var newRestaurant = new Restaurant({
+          categories: req.body.categories,
+          display_phone: req.body.display_phone,
+          image_url: req.body.image_url,
+          location: req.body.location,
+          name: req.body.name,
+          rating: req.body.rating,
+          rating_img_url: req.body.rating_img_url,
+          url: req.body.url,
+          id: req.body.id
+        });
+        user.favorite_restaurants.push(newRestaurant)
+        user.save(function(err){
+          if(err){
+            res.json({err: err});
+          } else {
+            res.json(true);
+          }
+        })
       })
     },
-    getAllRestaurants: function(req, res){
-      Restaurant.find({}, function(err, restaurants){
-        if(err){
-          res.json({err: err});
-        } else {
-          res.json(restaurants);
-        }
-      })
-    },
-    getRestaurant: function(req, res){
-      Restaurant.findOne({_id: req.params.id}, function(err, results){
-				if(err) {
-					res.json({status:'failed', err:err})
-				} else {
-					res.json(results);
-				}
-      })
-		},
+    // getAllRestaurants: function(req, res){
+    //   Restaurant.find({}, function(err, restaurants){
+    //     if(err){
+    //       res.json({err: err});
+    //     } else {
+    //       res.json(restaurants);
+    //     }
+    //   })
+    // },
+  //   getRestaurant: function(req, res){
+  //     Restaurant.findOne({_id: req.params.id}, function(err, results){
+		// 		if(err) {
+		// 			res.json({status:'failed', err:err})
+		// 		} else {
+		// 			res.json(results);
+		// 		}
+  //     })
+		// },
     removeRestaurant: function(req, res){
-      //TODO:
+      console.log(req.params.id, 'current user id')
+      console.log(req.body._id, 'current restaurant id')
+      User.findOne({'_id' : req.params.id}, function(err, user){
+        for(var i=0; i < user.favorite_restaurants.length; i++){
+          if(user.favorite_restaurants[i]._id == req.body._id){
+            user.favorite_restaurants.splice(i, 1);
+            break;
+          }
+        }
+        user.save(function(err){
+          if(err){
+            res.json({err: err});
+          } else {
+            res.json(true);
+          }
+        })
+      })
     },
     searchRestaurants: function(req,res){
       console.log('searching with this', req.body);

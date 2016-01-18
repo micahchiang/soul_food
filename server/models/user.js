@@ -12,6 +12,7 @@ var UserSchema = new mongoose.Schema({
   	activity_count: Number,
 		authId: Number,
 		friends: [],
+    favorite_restaurants: [],
 		provider: String,
   	pictureURL: String,
   	json_info: Object,

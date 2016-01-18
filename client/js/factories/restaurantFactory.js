@@ -14,17 +14,22 @@ soulFood.factory('restaurantFactory' , function($http){
         callback(response);
       })
     },
-    getRestaurant: function(id, callback){
-      $http.get('/getRestaurant/' + id).then(function(response){
-        console.log(response);
-        callback(response);
-      })
-    },
-    getAllRestaurants: function (callback){
-      $http.get('/getAllRestaurants').then(function(output){
-        console.log(output, 'output in user factory');
-        callback(output);
-      })
-    },
+    removeRestaurant: function(restaurant, currentUserId, callback){
+      console.log(currentUserId, 'current user id in restaurant factory')
+       console.log(restaurant, 'current restaurant in restaurant factory')
+      $http.post('/removeRestaurant/'+currentUserId, restaurant).success(function(output){callback(output);});
+    }
+    // getRestaurant: function(id, callback){
+    //   $http.get('/getRestaurant/' + id).then(function(response){
+    //     console.log(response);
+    //     callback(response);
+    //   })
+    // },
+    // getAllRestaurants: function (callback){
+    //   $http.get('/getAllRestaurants').then(function(output){
+    //     console.log(output, 'output in user factory');
+    //     callback(output);
+    //   })
+    // },
   }
 })

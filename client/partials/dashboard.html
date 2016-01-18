@@ -66,7 +66,7 @@
       <label>Event Time:</label> <input  type="time" name="time" ng-model="newEvent.time"  required>
       <label>Restaurant:</label>
         <select ng-model="newEvent.restaurant" required>
-          <option ng-repeat="restaurant in restaurants" value="{{restaurant._id}}">{{restaurant.name}}</option>
+          <option ng-repeat="restaurant in user.favorite_restaurants" value="{{restaurant._id}}">{{restaurant.name}}</option>
         </select>
       <label>Event Location:</label>
         <select ng-model="newEvent.location" name="location" required>

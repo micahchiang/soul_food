@@ -25,8 +25,9 @@ module.exports = function(app) {
   //restaurant routes
   app.post('/addRestaurant', restaurants.addRestaurant);
   app.post('/searchRestaurants', restaurants.searchRestaurants);
-  app.get('/getRestaurant/:id', restaurants.getRestaurant);
-  app.get('/getAllRestaurants', restaurants.getAllRestaurants);
+  // app.get('/getRestaurant/:id', restaurants.getRestaurant);
+  // app.get('/getAllRestaurants', restaurants.getAllRestaurants);
+  app.post('/removeRestaurant/:id', restaurants.removeRestaurant);
   //OAUTH routes
   app.get("/auth/facebook", passport.authenticate("facebook",{scope: ['email']}));
   app.get("/auth/facebook/callback",

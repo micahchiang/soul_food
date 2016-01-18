@@ -41,6 +41,9 @@ soulFood.factory('userFactory' , function($http){
         console.log(response);
       })
     },
+    getCurrentUser: function(callback){
+      console.log(user, 'in user controller')
+    },
     checkLogin: function(callback){
       $http.get('/loggedin').then(function(response){
         console.log(response);
