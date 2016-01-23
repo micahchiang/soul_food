@@ -1,18 +1,24 @@
-<div ng-controller='restaurantController'>
-  <h1><a href="{{restaurant.url}}"><span ng-bind='restaurant.name'></span></a></h1>
-  <h3><span ng-bind='restaurant.display_phone'></span></h3>
-  <h4>Rating: <span ng-bind='restaurant.rating'></span> <img src="{{restaurant.rating_img_url}}" alt="" /></h4>
-  <img src="{{restaurant.image_url}}" alt="" />
-  <h4>Location: </h4>
-  <iframe
-    width="600"
-    height="450"
-    frameborder="0" style="border:0"
-    ng-src="{{trustedURL}}" allowfullscreen>
-  </iframe>
-  <div ng-repeat="address in restaurant.location.display_address">
-    <p>
-      <span ng-bind="address"></span>
-    </p>
+<div ng-controller='restaurantController' class="container">
+  <div class="card">
+    <div class="container">
+      <h1 class="card-title"><a href="{{restaurant.url}}" uib-popover="View on Yelp" popover-trigger="mouseenter"><span ng-bind='restaurant.name'></span><i class="fa fa-yelp"></i></a></h1>
+      <h3><i class="fa fa-phone"></i><span ng-bind='restaurant.display_phone'></span></h3>
+      <h4><img src="{{restaurant.rating_img_url}}" alt="" /></h4>
+      <img src="{{restaurant.image_url}}" alt="" />
+    </div>
+    <div class="container">
+      <iframe
+        width="500"
+        height="500"
+        frameborder="0" style="border:0"
+        ng-src="{{trustedURL}}" allowfullscreen>
+      </iframe>
+      <h4><i class="fa fa-map-marker"></i></h4>
+      <div ng-repeat="address in restaurant.location.display_address">
+        <p>
+          <span ng-bind="address"></span>
+        </p>
+      </div>
+    </div>
   </div>
 </div>

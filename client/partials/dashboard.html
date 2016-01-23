@@ -1,26 +1,31 @@
-<div id = 'wrapper' ng-controller='dashboardController'>
-  <header>
-    <h2>Welcome, <span ng-bind='user.name'></span>
-    <button id = 'btn1' class = 'btn' ng-click = 'nevigateToEvent()'>events</button>
-    <button id = 'btn2' class = 'btn' ng-click='logout()'>logout</button>
-  </header>
-<div id = 'bodywrapper'>
-  <div id = 'userinfo'>
-  <img src='{{user.pictureURL}}'/>
-  <h5>your email: <span ng-bind='user.email'></span></h5>
+<div class="container" ng-controller='dashboardController'>
+  <div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img src='{{user.pictureURL}}'>
+          <span class="card-title" ng-bind='user.name'></span>
+        </div>
+        <div class="card-content">
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- <h3>Your name is : <span ng-bind='user.name'></span></h3> -->
+<div id = 'bodywrapper'>
 <div id = 'constraint'>
  <div id = 'friendbox'>
   <h2>Available Friends</h2>
   <ul ng-repeat="person in persons">
-    <li ng-model="person">{{person.name}} <button ng-click="addFriend(person, user)">Add Friend</button></li>
+    <li ng-model="person">{{person.name}} <button class='btn' ng-click="addFriend(person, user)"><i class="fa fa-user-plus"></i></button></li>
   </ul>
 </div>
   <div id = 'eventsbox' class="Events">
     <label><input type="text" ng-model="filter_event" placeholder="search event..."></label>
     <h2>Upcoming Events</h2>
-  <table>
+  <table class="highlight">
     <thead>
       <tr>
         <th>Date</th>
@@ -44,7 +49,7 @@
         <td ng-bind="event.description"></td>
         <td ng-bind="event.type_of_food"></td>
         <td> <a ng-href="#/user/{{event.user._id}}"><span ng-bind='event.user.name'> </td>
-        <td><button ng-show="event.user._id == user._id" ng-click="destroyEvent(event._id)">Cancel</button></td>
+        <td><button ng-show="event.user._id == user._id" ng-click="destroyEvent(event._id)" class="btn"><i class="fa fa-trash"></i></button></td>
       </tr>
     </tbody>
   </table>
@@ -53,7 +58,7 @@
   <h2>Friends List</h2>
   <div >
     <ul ng-repeat="friend in user.friends">
-      <li ng-model="friend">{{friend.name}} <button ng-click="removeFriend(friend, user)">Remove Friend</button></a></li>
+      <li ng-model="friend">{{friend.name}} <button ng-click="removeFriend(friend, user)" class="btn"><i class="fa fa-user-times"></i></button></a></li>
     </ul>
   </div>
 </div>
@@ -63,6 +68,7 @@
   <form ng-submit="addEvent()">
       <label>Event Title:</label> <input type= "text" name="title" value="title" ng-model="newEvent.title" required>
       <label>Event Date:</label> <input  type="date" name="date" ng-model="newEvent.date" required>
+      <!-- <uib-datepicker></uib-datepicker> --> 
       <label>Event Time:</label> <input  type="time" name="time" ng-model="newEvent.time"  required>
       <label>Restaurant:</label>
         <select ng-model="newEvent.restaurant" required>
@@ -106,7 +112,7 @@
           <option value="Indian">Indian</option>
           <option value="MISC">MISC</option>
         </select>
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit" class="btn">
   </form>
 </div>
 </div>

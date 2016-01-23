@@ -40,10 +40,11 @@
 #slide1{
 	width: 100%;
 	background: url('/images/soul_foodbg.jpg') 50% 0 no-repeat fixed;
-	height: 600px;
+	height: auto;
 	margin: 0;
 	padding: 200px 0 260px 0;
-	background-size: cover;
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 	#slide1 h1{
 		text-align: center;

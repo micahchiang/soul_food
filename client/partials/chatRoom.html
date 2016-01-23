@@ -1,14 +1,15 @@
 <div ng-controller="chatController" id="container">
-	<h1>The <span style ='font-family:"Rock Salt"'>Soul Food</span> Chat Room</h1>
-		<div id = 'infobox'>
-		<h4>Connect with others and coordinate meetups</h4>
-		<p>Current User: <span ng-bind="user.name"></span></p>
+	<h1 class="container"><span style ='font-family:"Rock Salt"'>Soul Food</span> Chat!</h1>
+		<div id = 'infobox' class="container">
+			<h4>Connect with others and coordinate meetups</h4>
+			<p>Logged in as: <span ng-bind="user.name"></span></p>
 		</div>
-	<div id="chatbox">
+	<div class="container">
+		<div id="chatbox" class="container">
+		</div>
+		<form class="container" ng-submit="createMessage(newMessage)">
+			<input type="text" name="message" ng-model="newMessage.message" placeholder="Enter your message here" id="chatinput">
+			<input class="btn" type="submit" value="Submit">
+		</form>
 	</div>
-	<form ng-submit="createMessage(newMessage)">
-		<input type="text" name="message" ng-model="newMessage.message" placeholder="Enter your message here" id="chatinput">
-		<input type="submit" value="Submit">
-	</form>
 </div>
-

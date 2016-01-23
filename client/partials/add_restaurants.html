@@ -1,11 +1,12 @@
-<div ng-controller='addRestaurantController'>
-  <h1>add restaurant</h1>
+<div ng-controller='addRestaurantController' class="container">
+  <h1>Bookmark a Restaurant</h1>
   <form ng-submit='searchRestaurants(search)'>
     <label>Find: <input type="text" placeholder="tacos, cheap dinner, Max's" ng-model='search.find'></label>
     <label>Near: <input type="text" placeholder='address, neighborhood, city, state or zip' ng-model='search.location'></label>
-    <input type="submit" value='search'>
+    <!-- <input type="submit" value='search' class="btn"> -->
+    <button class="btn"><i class="fa fa-search"></i></button>
   </form>
-    <table>
+    <table class="highlight">
       <thead>
         <tr>
           <td>
@@ -27,19 +28,19 @@
       </thead>
       <tr ng-repeat='searchResult in searchResults'>
         <td>
-          [{{$index + 1}}]
+          {{$index + 1}}
         </td>
         <td>
-          <img src="{{searchResult.image_url}}" alt="" />
+          <img class="img-responsive" src="{{searchResult.image_url}}" alt="" />
         </td>
         <td>
-          <span ng-bind='searchResult.name'></span>
+          <a href="{{searchResult.url}}" uib-popover="View on Yelp" popover-trigger="mouseenter"><span ng-bind='searchResult.name'></span><i class="fa fa-yelp"></i></a>
         </td>
         <td>
-          <img src="{{searchResult.rating_img_url}}" alt="" />
+          <img class="img-responsive" src="{{searchResult.rating_img_url}}" alt="" />
         </td>
         <td>
-          <button ng-click='addRestaurant(searchResult)'>Add to Restaurant List</button>
+          <button ng-click='addRestaurant(searchResult)' class="btn"><i class="fa fa-bookmark"></i></button>
         </td>
       </tr>
     </table>

@@ -1,9 +1,9 @@
 <div class="container" id="user" ng-controller="profileController">
+	<div class="card container">
 		<div ng-repeat="user in userdata">
-			<header><h3>User: <span ng-bind='user.name'></span></h3></header>
-			<h4>Created...</h4>
+			<header><h3><span ng-bind='user.name'></span></h3></header>
 		</div>
-    <table>
+    <table class="highlight">
       <thead>
         <tr>
           <th>Date</th>
@@ -12,19 +12,20 @@
 					<th>Restaurant</th>
           <th>Location</th>
           <th>Description</th>
-          <th>Type of food</th>
+          <th>Category</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="event in events | filter:filter_event | orderBy: 'created_at'" >
           <td ng-bind="event.date"></td>
           <td ng-bind="event.time"></td>
-          <td> <a href="#/event/{{event._id}}"><span ng-bind='event.title'></span></a> </td>
-					<td> <a href="#/restaurant/{{event.restaurant._id}}"><span ng-bind='event.restaurant.name'></span></a> </td>
+          <td> <a href="#/event/{{event._id}}" uib-popover="View Event" popover-trigger="mouseenter"><span ng-bind='event.title'></span></a> </td>
+					<td> <a href="#/restaurant/{{event.restaurant._id}}" uib-popover="View Restaurant" popover-trigger="mouseenter"><span ng-bind='event.restaurant.name'></span></a> </td>
           <td ng-bind="event.location"></td>
           <td ng-bind="event.description"></td>
           <td ng-bind="event.type_of_food"></td>
         </tr>
       </tbody>
     </table>
+	</div>
 </div>

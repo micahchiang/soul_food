@@ -1,25 +1,29 @@
-<div id = 'eventbox' ng-controller="eventsController">
-  <div id = 'infobox' ng-repeat="event in events | filter:filter_event | orderBy: 'created_at'">
-        <div class = 'boxes'><strong>Date:</strong><p ng-bind="event.date"></p></div>
-        <div class = 'boxes'><strong>Time:</strong><p ng-bind="event.time"></p></div>
-        <div class = 'boxes'><strong>Title</strong><p><span ng-bind='event.title'></span></a> </p></div>
-        <div class = 'boxes'><strong>Restaurant</strong><p><a ng-href="#/restaurant/{{event.restaurant._id}}"><span ng-bind='event.restaurant.name'></a> </p></div>
-        <div class = 'boxes'><strong>Location</strong><p ng-bind="event.location"></p></div>
-        <div class = 'boxes'><strong>Description</strong><p ng-bind="event.description"></p></div>
-        <div class = 'boxes'><strong>Type of Food</strong><p ng-bind="event.type_of_food"></p></div>
-        <div class = 'boxes'><strong>Creator Name</strong><p> <a ng-href="#/user/{{event.user._id}}"><span ng-bind='event.user.name'></a></p></div>
+<div class="container" ng-controller="eventsController">
+  <div class="card container blue-grey darken-1" ng-repeat="event in events | filter:filter_event | orderBy: 'created_at'">
+        <div class="card-content white-text">
+          <div class = 'card-title'><p><span ng-bind='event.title'></span></a> </p></div>
+          <p ng-bind="event.description"></p>
+          <p><a ng-href="#/restaurant/{{event.restaurant._id}}"><span ng-bind='event.restaurant.name'></a></p>
+          <p ng-bind="event.location"></p>
+          Organizer: <a ng-href="#/user/{{event.user._id}}"><span ng-bind='event.user.name'></a>
+        </div>
+        <div class="card-action">
+          <a ng-bind="event.date"></a>
+          <a ng-bind="event.time"></a>
+          <a ng-bind="event.type_of_food"></a>
+        </div>
           <!-- start comments-->
-        <div class="comments">
-          <h4>Comment here</h4>
+        <div class="container">
+          <h4><i class="fa fa-comment"></i></h4>
           <form ng-submit='addComment(newComment, event._id)'>
-            <label><textarea ng-model="newComment.content" rows="8" cols="40"></textarea></label>
-            <button>Comment</button>
+            <label><textarea id="icon_prefix2" class="materialize-textarea" ng-model="newComment.content" rows="8" cols="40"></textarea></label>
+            <label><button class='btn'><i class="fa fa-paper-plane"></i></button></label>
           </form>
         </div>
         <div id = 'commentbox'>
-				<div ng-repeat="comment in comments">
-			       <strong><a ng-href="#/user/{{comment.user._id}}" ><span ng-bind="comment.user.name"></span></a> said at <span ng-bind="comment.created_at | date"></span>:</strong>
-             <p><span ng-bind="comment.content"></span></p>
+				<div class="container" ng-repeat="comment in comments">
+			     <strong><a ng-href="#/user/{{comment.user._id}}" ><span ng-bind="comment.user.name"></span></a> said at <span ng-bind="comment.created_at | date"></span>:</strong>
+           <p><span ng-bind="comment.content"></span></p>
         </div>
       </div>
   </div>

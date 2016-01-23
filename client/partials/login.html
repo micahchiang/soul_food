@@ -1,34 +1,33 @@
 <div ng-controller='loginController'>
-<div id = 'wrapper'>
- <div id = 'formwrapper'> 
-  <h1>Soul Food</h1>
+  <div class="container">
+    <div id = 'register' class = 'boxes'>
+    <form ng-submit='createUser(newUser)'>
+    <p>New? Join Soul Food today!</p>
+      <div ng-if='loginError.message'><span ng-bind='loginError.message'></span></div>
+      <input type = 'text' ng-model = 'newUser.name' name = 'name'required placeholder="Name">
+      <input type = 'email' ng-model = 'newUser.email' name = 'email'required placeholder="Email">
+      <input type = 'password' ng-model = 'newUser.password' name = 'password'required placeholder="Password">
+      <input type = 'password'  name = 'confirm password' ng-model='newUser.confirmPassword' required placeholder="Confirm Password">
+      <input class ='btn' type = 'submit' value = 'Register'>
+    </form>
+    </div>
 
-  <div id = 'register' class = 'boxes'>
-  <form ng-submit='createUser(newUser)'>
-  <p>New? Join Soul Food today!</p>
-    <!-- <label>First Name</label><input type = 'text' ng-model = 'newUser.first_name' name = 'firstname'>
-    <label>Last Name</label><input type = 'text' ng-model = 'newUser.last_name' name = 'lastname'> -->
-    <div ng-if='loginError.message'><span ng-bind='loginError.message'></span></div>
-    <label>Name</label><input type = 'text' ng-model = 'newUser.name' name = 'name'required>
-    <label>Email</label><input type = 'email' ng-model = 'newUser.email' name = 'email'required>
-    <label>Password</label><input type = 'password' ng-model = 'newUser.password' name = 'password'required>
-    <label>Confirm Password</label><input type = 'password'  name = 'confirm password' ng-model='newUser.confirmPassword' required>
-    <input class ='submission' type = 'submit' value = 'Register'>
-  </form>
+    <div id = 'login' class = 'boxes'>
+    <form ng-submit='loginUser(userData)'>
+      <p>Been here before? Login below.</p>
+      <div ng-if='error.message'><span ng-bind='error.message'></span></div>
+      <input type = 'text' ng-model='userData.email'required placeholder="Email">
+      <input type = 'password' ng-model = 'userData.password'required placeholder="Password">
+      <input class = 'btn' type ='submit' value = 'login'>
+    </form>
+    </div>
+
+    <a class = 'btn btn-block btn-social btn-facebook' href="/auth/facebook"><span class="fa fa-facebook"></span>Sign in with Facebook</a>
+    <a class="btn btn-block btn-social btn-google" href="/auth/google">
+      <span class="fa fa-google"></span> Sign in with Google
+    </a>
+    <p>
+      Don't worry, we never post without your permission.
+    </p>
   </div>
-
-  <div id = 'login' class = 'boxes'>
-  <form ng-submit='loginUser(userData)'>
-    <p>Been here before? Login below.</p>
-    <div ng-if='error.message'><span ng-bind='error.message'></span></div>
-    <label>Email</label><input type = 'text' ng-model='userData.email'required>
-    <label>Password</label><input type = 'password' ng-model = 'userData.password'required>
-    <input class = 'submission' type ='submit' value = 'login'>
-  </form>
-  </div>
-
-  <a class = 'oauth' id = 'google' href="/auth/google">Sign in with Google+</a>
-  <a id = 'facebook' class = 'oauth' href="/auth/facebook">Sign in with Facebook</a>
-</div>  
-</div>
 </div>

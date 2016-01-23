@@ -1,5 +1,5 @@
-<div ng-controller='restaurantsController'>
-  <table>
+<div ng-controller='restaurantsController' class="container">
+  <table class="highlight">
     <thead>
       <tr>
         <td>
@@ -21,18 +21,18 @@
     </thead>
     <tr ng-repeat='restaurant in restaurants'>
       <td>
-        [{{$index + 1}}]
+        {{$index + 1}}
       </td>
       <td>
-        <img src="{{restaurant.image_url}}" alt="" />
+        <img class="img-responsive" src="{{restaurant.image_url}}" alt="" />
       </td>
       <td>
         <a ng-href="#/restaurant/{{restaurant._id}}"><span ng-bind='restaurant.name'></span></a>
       </td>
       <td>
-        <img src="{{restaurant.rating_img_url}}" alt="" />
+        <img class="img-responsive" src="{{restaurant.rating_img_url}}" alt="" />
       </td>
-      <td ng-model="restaurant"><button ng-click="removeRestaurant(restaurant)">Remove Restaurant</button></a></td>
+      <td ng-model="restaurant"><button ng-click="removeRestaurant(restaurant)" class="btn"><i class="fa fa-trash"></i></button></a></td>
     </tr>
   </table>
 </div>

@@ -2,7 +2,9 @@
   "name": "soulFood",
   "version": "0.0.1",
   "dependencies": {
+    "angular-animate": "^1.4.9",
     "angular-socket-io": "^0.7.0",
+    "angular-ui-bootstrap": "^1.1.0",
     "bcrypt": "^0.8.5",
     "body-parser": "latest",
     "cookie-parser": "^1.4.0",
