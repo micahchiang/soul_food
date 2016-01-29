@@ -7,7 +7,7 @@ var express = require("express"),
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
-
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/soulfood')
 //passport and strategies
 var passport = require('passport');
 var passportLocal = require('passport-local');
