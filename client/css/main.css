@@ -53,7 +53,7 @@
 /*		border: 1px solid black;*/
 	}
 
-#slide2{
+/*#slide2{
 	width: 100%;
 	height: 900px;
 	margin: 0 auto;
@@ -64,32 +64,33 @@
 	color: black;
 	background-size: cover;
 	/*background: no-repeat fixed;*/
-}
-	.three_boxes{
+/*}*/
+/*	.three_boxes{
 		width: 300px;
 		height: 340px;
-		/*border: 1px solid black;*/
+		border: 1px solid black;
 		display: inline-block;
 		position: relative;
-	}
-	.three_boxes h4{
+	}*/
+/*	.three_boxes h4{
 		position: absolute;
 		bottom: 0;
 		margin-left: 70px;
 		margin-top: 5px;
 	}
-	#friends{
+*/
+/*	#friends{
 
 		background: url('/images/addfriend.jpg') no-repeat;
-	}
-	#eating{
+	}*/
+/*	#eating{
 		background: url('/images/eatingicon.jpeg') no-repeat;
 		margin-left: 15px;
 		margin-right: 25px;
-	}
-	#networking{
+	}*/
+/*	#networking{
 		background: url('/images/networking.jpeg') no-repeat;
-	}
+	}*/
 
 #slide3{
 	width: 100%;
